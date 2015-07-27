@@ -15,5 +15,15 @@
   <%= @song.filepath %>
 </p>
 
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4 id="large-title">Disqus</h4>
+	</div>
+	<div class="panel-body" id="disqus">
+	</div>
+	<div class="panel-footer">
+	</div>
+</div>
+
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>

@@ -18,8 +18,18 @@
     <div class="panel-footer">
       <%= link_to '88kmasuda on Instagram', 'https://instagram.com/88kmasuda' %>
     </div>
-
   </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 id="large-title">Disqus</h4>
+    </div>
+    <div class="panel-body" id="disqus">
+    </div>
+    <div class="panel-footer">
+    </div>
+  </div>
+
+
   <% if user_signed_in? %>
     <%= link_to 'Edit', edit_igram_path(@igram) %> |
   <% end %>
