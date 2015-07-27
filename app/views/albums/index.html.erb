@@ -1,0 +1,45 @@
+<div class="spaces"></div>
+<span><h1 class="text-center">Albums<small> Basically, what the site is supposed to feature</small></h1>
+
+<% if @albums.count > 0 %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.name %></td>
+        <td><%= album.year %></td>
+        <td><%= link_to 'Show', album %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_album_path(album) %></td>
+          <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+<br>
+<% if user_signed_in? %>
+  <%= link_to 'New Album', new_album_path %>
+<% end %>
+
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <iframe style="border: 0; width: 100%; height: 600px;" src="http://bandcamp.com/EmbeddedPlayer/album=2264718191/size=large/bgcol=333333/linkcol=0f91ff/artwork=small/transparent=true/" seamless><a href="http://chipzel.co.uk/album/interstellaria-ost">Interstellaria OST by chipzel</a></iframe>
+    </div>
+    <div class="col-md-6">
+      <iframe style="border: 0; width: 100%; height: 600px;" src="http://bandcamp.com/EmbeddedPlayer/album=644473563/size=large/bgcol=333333/linkcol=0f91ff/artwork=small/transparent=true/" seamless><a href="http://esposthumus.bandcamp.com/album/makara">Makara by E.S. Posthumus</a></iframe>
+    </div>
+  </div>
+</div>
+<br>

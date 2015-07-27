@@ -1,0 +1,22 @@
+<div class="spaces"></div>
+<div class="spaces"></div>
+
+
+<div class="container">
+  <br>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="pull-left">About Danny Carvalho</h4>
+      <%= button_to 'Read on Blogger', '#', :class=> 'btn btn-primary pull-right', method: 'get' %> 
+    </div>
+    <div class="panel-body" id="blog-show-content">
+      <br>
+      <%= @content.html_safe %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to 'Read on Blogger', '#' %> 
+    </div>
+
+  </div>
+</div>
+<br>

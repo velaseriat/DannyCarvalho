@@ -1,0 +1,73 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require animate
+ *= require font-awesome
+ */
+@import "bootstrap-sprockets";
+@import "bootswatch/cyborg/variables";
+@import "bootstrap";
+@import "bootswatch/cyborg/bootswatch";
+
+
+#my-menu {
+    -moz-animation-duration: 0.2s;
+    -webkit-animation-duration: 0.2s;
+    -o-animation-duration: 0.2s;
+    -ms-animation-duration: 0.2s;
+}
+
+html{
+	position: relative;
+	min-height: 100%;
+}
+
+body{
+	margin-bottom: 148px;
+	background: black;
+}
+
+#jumbotron-footer-bottom{
+	padding-top:0px;
+	padding-bottom:0px;
+	margin-bottom: 0px;
+	bottom:0px;
+	height: 148px;
+	position: absolute;
+	width: 100%;
+}
+
+#jumbotron-footer{
+	padding-top:0px;
+	padding-bottom:0px;
+	margin-bottom: 0px;
+}
+
+#share_buttons {
+  position: fixed;
+  bottom:0px;
+  left:0px;
+  z-index: 2;
+
+  button{
+    margin:5px;
+    opacity: 0.8;
+  }
+}
+
+@media all and (max-width: 1000px ){
+	.navbar-right{
+		display:none !important;
+	}
+}

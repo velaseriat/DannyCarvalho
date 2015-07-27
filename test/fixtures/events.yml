@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  summary: MyString
+  dateTime: MyString
+  timeZone: MyString
+  location: MyString
+  description: MyString
+  colorId: 1
+
+two:
+  summary: MyString
+  dateTime: MyString
+  timeZone: MyString
+  location: MyString
+  description: MyString
+  colorId: 1

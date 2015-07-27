@@ -1,0 +1,70 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#event-holder {
+    text-align: center;
+    padding: 0px;
+}
+
+.theoverflower > .text-center > img{
+	height: 250px;
+}
+
+.theoverflower{
+	overflow: hidden;
+	margin: 3px; 
+	background: #22222;
+	position: relative;
+	
+}
+
+div.row{
+	margin-bottom: 0px;
+}
+
+#theoverlayer{
+	float: left;
+	color: white;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #080808;
+	opacity: 0;
+	transition: all ease 0.4s;
+  	-moz-transition: all ease 0.4s;
+  	-webkit-transition: all ease 0.4s;
+  	-o-transition: all ease 0.4s;
+  	-ms-transition: all ease 0.4s;
+}
+
+#theoverlayer:hover{
+	opacity: 0.8;
+	transition: all ease 0.4s;
+  	-moz-transition: all ease 0.4s;
+  	-webkit-transition: all ease 0.4s;
+  	-o-transition: all ease 0.4s;
+  	-ms-transition: all ease 0.4s;
+}
+
+.my-link{
+	position: absolute;
+	float: left;
+	height: 100%;
+	width: 100%;
+}
+
+#content-body{
+	width: 75%;
+}
+
+#large-title{
+	color: #000000;
+}
+#small-title{
+	color: #CCCCCC;
+}
+
+#event-body{
+	padding: 0px;
+}

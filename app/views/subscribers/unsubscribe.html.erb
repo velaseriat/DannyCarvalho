@@ -1,0 +1,24 @@
+<div class="spaces"></div>
+<div class="spaces"></div>
+
+<div class="container">
+	<h1 class="text-center">Sad to see you go! =(</h1>
+	<br>
+<% if !@thesubscriber.nil? %>
+<div class="subscribe-field text-center">
+	<%= form_for @thesubscriber, remote: true, method: 'delete' do |f| %>
+	<div class="input-group">
+		<%= f.text_field :email, :class => "form-control", :placeholder => "noackup@gopoundsand.com", :value => @thesubscriber.email %>
+		<%= f.hidden_field :opted_out, default: true %>
+		<span class="input-group-btn"><%= f.submit "Unsubscribe", :class => "btn btn-primary"%></span>
+	</div>
+	<% end %>
+</div>
+<% else %>
+ <h4 class="text-center">
+ 	<%= "The email \'#{params[:subscriber_email]}\' doesn't exist!" %>
+ 	<br>
+ 	Please <%= link_to 'contact us', 'mailto:velaseriat@outlook.com' %> if  you continue to have issues!
+ </h4>
+<% end %>
+</div>

@@ -1,0 +1,87 @@
+// Place all the styles related to the alohas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#header-link{
+  margin-top: 20px;
+}
+#header-row{
+  margin-bottom: 0px;
+}
+.panel-heading {
+  white-space: nowrap;
+  overflow:hidden;
+}
+
+.row{
+  margin-bottom: 20px;
+}
+
+.col-md-4 > .panel-group {
+  margin-bottom: 0px;
+}
+
+.col-md-4 > .panel {
+  min-height: 600px;
+}
+
+.panel-body > .speciall{
+  min-height: 442px;
+  overflow-x: hidden;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 100%;
+    margin: auto;
+    opcaity: .5;
+}
+
+#my-panel-title{
+  color: #CCCCCC;
+}
+
+#my-header-title{
+  color: #CCCCCC;
+}
+
+#my-left-chevron, #my-right-chevron {
+    -moz-animation-duration: 0.8s;
+    -webkit-animation-duration: 0.8s;
+    -o-animation-duration: 0.8s;
+    -ms-animation-duration: 0.8s;
+}
+
+#input-group-footer{
+  width:80%;
+  margin-left:10%;
+  margin-right:10%;
+}
+
+#danny-photo{
+  margin: 0 auto;
+}
+
+#header-jumbotron{
+  text-color: white;
+  .lead, h1{
+    color: #DDDDDD;
+    text-shadow: 2px 2px 2px  black;
+  }
+}
+
+#header-background{
+  position:fixed;
+  width: 100%;
+  overflow-x:hidden;
+}
+
+#header-background-image{
+  min-width: 100%;
+  float:left;
+}
+
+ @media all and (max-width: 768px ){
+            #header-background, #header-background-image{
+              display:none !important;
+            }
+}

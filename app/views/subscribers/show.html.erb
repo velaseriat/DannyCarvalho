@@ -1,0 +1,16 @@
+<div class="spaces"></div>
+<div class="spaces"></div>
+<div class="text-center">
+<p class="lead">
+  <strong>Email:</strong>
+  <%= @subscriber.email %>
+</p>
+
+<p class="lead">
+  <strong>Opted out:</strong>
+  <%= @subscriber.opted_out %>
+</p>
+
+<%= link_to 'Edit', edit_subscriber_path(@subscriber) %> |
+<%= link_to 'Back', subscribers_path %>
+</div>

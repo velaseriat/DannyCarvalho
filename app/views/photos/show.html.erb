@@ -1,0 +1,28 @@
+<div class="spaces"></div>
+<div class="spaces"></div>
+
+
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 id="large-title"><%= @photo.dateTime.strftime("%m/%d") %><small id="small-title"> <%= @photo.title %></small></h4>
+    </div>
+    <div class="panel-body" id="blog-show-content">
+    	<br>
+    	<div id="center-me">
+    		<%= image_tag @photo.image_filepath, class: 'img-responsive' %>
+    	</div>
+      <br>
+      <%= @photo.text %>
+    </div>
+    <div class="panel-footer">
+    	
+    </div>
+
+  </div>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_photo_path(@photo) %> |
+  <% end %>
+  <%= link_to 'All Photos', photos_path %>
+</div>
+<br>

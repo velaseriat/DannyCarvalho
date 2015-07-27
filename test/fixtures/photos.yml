@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image_filepath: MyString
+  dateTime: 2015-07-15 20:51:11
+  text: MyString
+
+two:
+  image_filepath: MyString
+  dateTime: 2015-07-15 20:51:11
+  text: MyString

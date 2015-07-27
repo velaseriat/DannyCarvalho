@@ -1,0 +1,345 @@
+<script>
+$(document).ready( function() {
+  $('#myCarousel').carousel();
+  $( 'body' ).stellar();
+  new WOW().init();
+});
+
+</script>
+
+<div id="header-background" data-stellar-ratio="0.5">
+  <%= image_tag 'background.jpg', :id=> "header-background-image" %>
+</div>
+
+<div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <%= image_tag "img/1920/1.jpg" , class: "carousel_image" %>
+      <span class="carousel-caption row-fluid">
+      </span>
+    </div>
+
+    <div class="item">
+      <%= image_tag "img/1920/2.jpg", class: "carousel_image" %>
+      <span class="carousel-caption row-fluid">
+        
+      </span>
+    </div>
+
+    <div class="item">
+      <%= image_tag "img/1920/3.jpg", class: "carousel_image" %>
+      <span class="carousel-caption row-fluid">
+        
+      </span>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" id="my-left-chevron" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" id="my-right-chevron" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div class="container" id="header-jumbotron">
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center wow slideInLeft">E Komo Mai!</h1>
+      <br>
+      <div class="text-center wow slideInLeft"><%= image_tag 'shapeimage_3.png', class: 'img-responsive img-rounded', id: 'danny-photo' %></div>
+      <br><br>
+      <p class="lead wow slideInLeft">
+        Aloha! Welcome to my new website. Here you may find information about me, my CDs, upcoming shows, and other exciting news. Stay posted, as we are currently working on adding more new and exciting features to this site to improve the user experience. Enjoy!
+        <br><br>
+        -Danny
+      </p>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row" id="header-row">
+        <div class="col-md-8">
+          <h4 class="pull-left">The Next of Gigs</h4>
+        </div>
+        <div class="col-md-4" id="header-link">
+          <%= link_to 'All Gigs', events_path, class: "pull-right", method: 'get' %>
+        </div>
+      </div>
+      <div class="panel-group" id="eventAccordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" id="my-panel-heading">
+          <div class="panel-heading" role="tab" id="eventHeadingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#eventAccordion" href="#eventCollapseOne" aria-expanded="true" aria-controls="eventCollapseOne" id="my-panel-title">
+                <%= @date1 + " - " + @event1.summary %>
+              </a>
+            </h4>
+          </div>
+          <div id="eventCollapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="eventHeadingOne">
+            <div class="panel-body" id="my-panel-body"><div class="speciall">
+              <%= image_tag @event1_image, class: "img-responsive center-block" %>
+              <br>
+              <%= @event1.description %>
+              <br><br>
+              <%= link_to  @event1 do %>
+                <span class="glyphicon glyphicon-calendar"></span>
+                Wait, What's Going On?
+              <% end %>
+            </div></div>
+          </div>
+        </div>
+        <div class="panel panel-default" id="my-panel-heading">
+          <div class="panel-heading" role="tab" id="eventHeadingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#eventAccordion" href="#eventCollapseTwo" aria-expanded="false" aria-controls="eventCollapseTwo" id="my-panel-title">
+                <%= @date2 + " - " + @event2.summary %>
+              </a>
+            </h4>
+          </div>
+          <div id="eventCollapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="eventHeadingTwo">
+            <div class="panel-body" id="my-panel-body"><div class="speciall">
+              <%= image_tag @event2_image, class: "img-responsive center-block" %>
+              <br>
+              <%= @event2.description %>
+              <br><br>
+              <%= link_to  @event2 do %>
+                <span class="glyphicon glyphicon-calendar"></span>
+                Wait, What's Going On?
+              <% end %>
+            </div></div>
+          </div>
+        </div>
+        <div class="panel panel-default" id="my-panel-heading">
+          <div class="panel-heading" role="tab" id="eventHeadingThree">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#eventAccordion" href="#eventCollapseThree" aria-expanded="false" aria-controls="eventCollapseThree" id="my-panel-title">
+                <%= @date3 + " - " + @event3.summary %>
+              </a>
+            </h4>
+          </div>
+          <div id="eventCollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="eventHeadingThree">
+            <div class="panel-body" id="my-panel-body"><div class="speciall">
+              <% if !@event3.image_filepath.file.nil? %>
+                <%= image_tag @event3.image_filepath, class: "img-responsive center-block" %>
+              <% end %>
+              <br>
+              <%= @event3.description %>
+              <br><br>
+              <%= link_to  @event3 do %>
+                <span class="glyphicon glyphicon-calendar"></span>
+                Wait, What's Going On?
+              <% end %>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row" id="header-row">
+        <div class="col-md-8">
+          <h4 class="pull-left">Store</h4>
+        </div>
+        <div class="col-md-4" id="header-link">
+          <%= link_to 'Music and More', :root, class: "pull-right", method: 'get' %>
+        </div>
+      </div>
+      <p class="lead">
+        We sold so much things that we no more.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <div class="row" id="header-row">
+        <div class="col-md-8">
+          <h4>About This App</h4>
+        </div>
+      </div>
+      <p class="lead">
+        This section will be deleted before the real launch.
+      </p>
+      <p>API Features (updates every 8 hours)</p>
+      <ul>
+        <li>Google Calendar - update gigs</li>
+        <li>YouTube Data API - update videos</li>
+        <li>Instagram API - update instagram photos</li>
+        <li>Blogger - update blogs</li>
+      </ul>
+      <p>Embedded Features</p>
+      <ul>
+        <li>Google Maps - gig location</li>
+        <li>YouTube</li>
+        <li>Instagram</li>
+        <li>Blogger - update blogs</li>
+        <li>Facebook</li>
+        <li>Soundcloud</li>
+        <li>Twitter - awesome embedded item</li>
+        <li>BandCamp - this guy too</li>
+      </ul>
+      <p>Notable Plugins</p>
+      <ul>
+        <li>Boostrap</li>
+        <li>Sidekiq - for mailing subscribers</li>
+        <li>Rufus Scheduler - for auto-updating database</li>
+        <li>Animate.css - lovely thing</li>
+        <li>Font Aweomse - well, cuz u r</li>
+        <li>MySQL - like a true friend</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row" id="header-row">
+        <div class="col-md-8">
+          <h4>@dannycarvalho Twitter Feed</h4>
+        </div>
+      </div>
+      <a class="twitter-timeline" href="https://twitter.com/velaseriat" data-widget-id="617998730868867072" data-chrome="noheader noscrollbar">Tweets by @velaseriat</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+    <div class="col-md-4">
+      <div class="row" id="header-row">
+        <div class="col-md-8">
+          <h4>The SOUNDCLOUD</h4>
+        </div>
+      </div>
+      <iframe width="100%" height="600" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/20253011&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+    </div>
+    <div class="col-md-4">
+      <div class="row" id="header-row">
+        <div class="col-md-6">
+          <h4 class="pull-left">YouTubez</h4>
+        </div>
+        <div class="col-md-6" id="header-link">
+          <%= link_to 'All Videos', videos_path, class: "pull-right", method: 'get' %>
+        </div>
+      </div>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" id="my-panel-heading">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="my-panel-title">
+                <%= @video1.title %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body" id="my-panel-body"><div class="speciall">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" width="100%" height="100%" src=<%= 'https://www.youtube.com/embed/' + @video1.url_path %> frameborder="0" allowfullscreen></iframe>
+              </div>
+              <%= @video1.description %>
+              <br><br>
+              <%= link_to  @video1 do %>
+              <span class="glyphicon glyphicon-play"></span>
+              We go look?
+              <% end %>
+            </div></div>
+          </div>
+        </div>
+        <div class="panel panel-default" id="my-panel-heading">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="my-panel-title">
+                <%= @video2.title %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body" id="my-panel-body"><div class="speciall">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" width="100%" height="100%" src=<%= 'https://www.youtube.com/embed/' + @video2.url_path %> frameborder="0" allowfullscreen></iframe>
+              </div>
+              <%= @video2.description %>
+              <br><br>
+              <%= link_to  @video2 do %>
+              <span class="glyphicon glyphicon-play"></span>
+              We go look?
+              <% end %>
+            </div></div>
+          </div>
+        </div>
+        <div class="panel panel-default" id="my-panel-heading">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="my-panel-title">
+                <%= @video3.title %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body" id="my-panel-body"><div class="speciall">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" width="100%" height="100%" src=<%= 'https://www.youtube.com/embed/' + @video3.url_path %> frameborder="0" allowfullscreen></iframe>
+              </div>
+              <%= @video3.description %>
+              <br><br>
+              <%= link_to  @video3 do %>
+              <span class="glyphicon glyphicon-play"></span>
+              We go look?
+              <% end %>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="space"></div>
+
+<div class="container-fluid jumbotron footer" id="jumbotron-footer">
+  <br>
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h4>Contact Danny<small> Like, Seriously!</small></h4>
+      Email: <%= mail_to 'velaseriat@outlook.com' %>
+      <br>
+      Phone: ###-###-#### (Honolulu)
+      <br>
+      Mailing Address: PO Box 832, Honolulu, HI 96820
+      <br><br>
+    </div>
+    <div class="col-md-4">
+      <center><h4>Brah, like subscribe?</h4></center>
+      <div class="subscribe-field">
+        <%= form_for Subscriber.new, remote: true do |f| %>
+        <div class="input-group" id="input-group-footer">
+          <%= f.text_field :email, :class => "form-control", :placeholder => "noackup@gopoundsand.com", :text => "text" %>
+          <%= f.hidden_field :opted_out, {:checked => "checked"}  %>
+          <span class="input-group-btn"><%= f.submit "Shoots!", :class => "btn btn-default" %></span>
+        </div>
+        <% end %>
+      </div>
+      <br>
+    </div>
+    <div class="col-md-4 text-center">
+      <h4>Trouble viewing this site?<small> Uh oh!</small></h4>
+      Webmaster: Kelly Masuda
+      <br>
+      Contact: <%= mail_to 'velaseriat@outlook.com' %>
+      <br>
+    </div>
+  </div>
+</div>
+

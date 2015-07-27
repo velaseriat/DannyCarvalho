@@ -1,0 +1,72 @@
+
+<div class="spaces"></div>
+
+<h1 class="text-center">Check 'Em Out!<small> Don't forget to tip, ah?</small></h1>
+
+<div class="spaces"></div>
+
+<% if user_signed_in? %>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Datetime</th>
+          <th>Summary</th>
+          <th>Location</th>
+          <th colspan="3">Admin Tools</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= event.dateTime %></td>
+            <td><%= event.summary %></td>
+            <td><%= event.location %></td>
+            <td><%= link_to 'Show', event %></td>
+            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to 'Post New Gig', new_event_path %>
+<% end %>
+
+<br>
+
+<div class="container-fluid">
+  <% @event_sets.each do |es| %>
+    <div class="row">
+      <% es.each do |e| %>
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 id="large-title"><%= e.dateTime.strftime("%m/%d") %> <small id="small-title"><%= e.summary %></small></h4>
+            </div>
+            <div class="panel-body" id="event-body">
+              <div class="theoverflower">
+                  <div id="theoverlayer">
+                    <%= link_to '', e, class: "my-link" %>
+                    <div class="text-center">
+                      <br>
+                      <%= e.location %>
+                      <br>
+                      <%= e.description %>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <% if !e.image_filepath.file.nil? %>
+                      <%= image_tag e.image_filepath %>
+                    <% else %>
+                      <%= image_tag "default.jpg" %>
+                    <% end %>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
