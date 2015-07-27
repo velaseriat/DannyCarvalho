@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   require 'open-uri'
   require 'digest'
   require 'instagram'
+  require 'rufus-scheduler'
 
   def reinitialize_files
     if !user_signed_in?
@@ -56,6 +57,22 @@ class UsersController < ApplicationController
       password:             @avanti["emailPassword"],
       authentication:       'plain',
       enable_starttls_auto: true  }
+
+
+      if !Rails.application.config.startScheduler
+        puts 'starting hard scheduler'
+        s = Rufus::Scheduler.singleton
+
+        s.every '2m' do
+          update_events
+          update_blogger
+          update_about
+          update_youtube
+          update_instagram
+          puts "Updated at at: #{Time.now}"
+        end
+        Rails.application.config.startScheduler = true
+      end
 
       respond_to do |format|
         format.html { redirect_to current_user }
