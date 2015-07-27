@@ -12,6 +12,8 @@
 			<br>
 			<%= button_to 'STEP 2: Update System Files', {action: 'reinitialize_files'}, class: "btn btn-warning", method: 'get' %>
 			<br>
+			<%= button_to 'STEP 3: Start Scheduler', {action: 'start_scheduler'}, class: "btn btn-primary", method: 'get' %>
+			<br>
 			<%= button_to 'Sidekiq Dashboard', '/sidekiq' , class: "btn btn-info", method: 'get' %>
 			<br>
 		</div>

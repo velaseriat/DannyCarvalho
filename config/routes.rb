@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'users/:id/update_instagram' => 'users#update_instagram'
   get 'users/:id/send_custom_emails' => 'users#send_custom_emails'
   get 'users/:id/reinitialize_files' => 'users#reinitialize_files'
+  get 'users/:id/start_scheduler' => 'users#start_scheduler'
   get 'about' => 'alohas#about'
   get 'unsubscribe' => 'subscribers#unsubscribe'
   delete 'unsubscribe' => 'subscribers#destroy'
