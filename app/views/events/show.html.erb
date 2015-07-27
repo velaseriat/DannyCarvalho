@@ -28,7 +28,7 @@
       
     </div>
     <div class="panel-footer">
-    	<iframe width="100%" height="520" frameborder="0" style="border:0" src=<%= "https://www.google.com/maps/embed/v1/place?q=" + @event.location.gsub(/\s/, '+') +"&key=" + Rails.application.config.googleMapKey %>></iframe> 
+    	<iframe width="100%" height="520" frameborder="0" style="border:0" src=<%= "https://www.google.com/maps/embed/v1/place?q=" + @event.location.gsub(/\s/, '+') +"&key=" + ENV['GOOGLE_MAP_API_KEY'] %>></iframe> 
     </div>
 
   </div>
