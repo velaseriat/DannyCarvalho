@@ -289,13 +289,17 @@ s = Rufus::Scheduler.singleton
       end
     end
   end
-s.every '8h' do
+s.every '2m' do
 	if Rails.application.config.googleCalendarID
 		update_events
     update_blogger
     update_about
     update_youtube
     update_instagram
- 		puts "Sent emails at: #{Time.now}"
+ 		puts "Updated at at: #{Time.now}"
  	end
+end
+
+s.every '30s' do
+  puts "Rufus is working"
 end
