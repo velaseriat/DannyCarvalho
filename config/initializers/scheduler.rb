@@ -290,7 +290,7 @@ s = Rufus::Scheduler.singleton
     end
   end
   
-s.every '1m' do
+s.every '6h' do
   if ENV['START_SCHEDULER'] = 'start'
     update_events
     update_blogger
