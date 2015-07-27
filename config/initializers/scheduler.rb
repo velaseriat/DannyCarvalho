@@ -290,14 +290,12 @@ s = Rufus::Scheduler.singleton
     end
   end
 s.every '2m' do
-	if Rails.application.config.googleCalendarID
-		update_events
-    update_blogger
-    update_about
-    update_youtube
-    update_instagram
- 		puts "Updated at at: #{Time.now}"
- 	end
+	update_events
+  update_blogger
+  update_about
+  update_youtube
+  update_instagram
+ 	puts "Updated at at: #{Time.now}"
 end
 
 s.every '30s' do
