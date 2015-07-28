@@ -363,7 +363,7 @@ class UsersController < ApplicationController
       results = client.execute!(
         :api_method => blogger.posts.list,
         :parameters => {
-          :blogId => '1756045714671751226',
+          :blogId => '1909269607934960155',
           :maxResults => 10,
           :orderBy => 'published',
           :status => 'live',
