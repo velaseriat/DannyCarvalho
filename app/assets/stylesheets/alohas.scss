@@ -11,6 +11,7 @@
 .panel-heading {
   white-space: nowrap;
   overflow:hidden;
+  opacity: 0.7;
 }
 
 .row{
@@ -84,4 +85,13 @@
             #header-background, #header-background-image{
               display:none !important;
             }
+}
+
+
+
+.foreground-panel{
+  padding: 10px;
+  position:relative;
+  min-width: 100%;
+  max-height: 600px;
 }
