@@ -163,7 +163,7 @@ class UsersController < ApplicationController
       end
       Subscriber.all.each do |s|
         if !s.opted_out
-          SubscriberMailer.event_emails(s, @events).deliver_later
+          SubscriberMailer.send_event_email(s, @events).deliver_later
         end
       end
       respond_to do |format|
