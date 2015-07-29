@@ -1,9 +1,9 @@
 class SubscriberMailer < ActionMailer::Base
   default from: "mailman@dannycarvalho.com"
 
-  def new_event(subscriber, event)
+  def email_events(subscriber, events)
   	@subscriber = subscriber
-  	@event = event
+  	@events = events
     mail to: subscriber.email, subject: "Danny Carvalho Newsletter - Upcoming Event"
   end
 

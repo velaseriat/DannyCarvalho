@@ -58,3 +58,4 @@ gem 'puma'
 gem 'rails_12factor', group: :production
 gem 'stellar-js-rails'
 gem 'wow-rails'
+gem 'share-counter'

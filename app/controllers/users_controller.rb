@@ -2,9 +2,21 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   require 'google/api_client'
   require 'open-uri'
-  require 'digest'
   require 'instagram'
   require 'rufus-scheduler'
+  require 'share-counter'
+
+  def check_social_count
+    if !user_signed_in?
+      redirect_to :root
+    else
+      url = 'http://www.dannycarvalho.com'
+      @counts = ShareCounter.all url
+    end
+    respond_to do |format|
+      format.js { }
+    end
+  end
 
   def start_scheduler
     if !user_signed_in?
@@ -141,14 +153,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def send_emails
+  def send_event_emails
     if !user_signed_in?
       redirect_to :root
     else
-      @event = Event.first
+      @events = Array.new
+      params[:selected_events].each do |se|
+        @events << Event.find(se)
+      end
       Subscriber.all.each do |s|
         if !s.opted_out
-          SubscriberMailer.new_event(s, @event).deliver_later
+          SubscriberMailer.event_emails(s, @events).deliver_later
         end
       end
       respond_to do |format|
@@ -457,8 +472,7 @@ class UsersController < ApplicationController
     if !user_signed_in?
       redirect_to :root
     else
-      @song = Song.first
-      puts @song.filepath.url
+      @events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
     end
   end
 

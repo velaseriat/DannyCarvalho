@@ -1,0 +1,13 @@
+Danny Carvalho Subscriber Newsletter
+
+Save the date!
+
+<% @events.each do |e| %>
+	<%= e.dateTime.strftime("%m/%d") %>
+
+	What's up?
+
+	<%= e.description %>
+
+
+<% end %>

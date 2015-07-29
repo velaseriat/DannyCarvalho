@@ -318,12 +318,15 @@
 
 			<div class="common_content">
         <h1>Save the date!</h1>
-        <p><%= @event.dateTime.strftime("%m/%d") %></p>
-        <br>
-        <h1>What's up?</h1>
-				<p><%= @event.description %></p>
-        <br>
-        <p><%=link_to @event, 'More details' %></p>
+        <% @events.each do |e| %>
+          <p><%= e.dateTime.strftime("%m/%d") %></p>
+          <br>
+          <h1>What's up?</h1>
+				  <p><%= e.description %></p>
+          <br>
+          <p><%=link_to e, 'More details' %></p>
+          <br><br>
+        <% end %>
 			</div>
 			<div class="top_content">
 

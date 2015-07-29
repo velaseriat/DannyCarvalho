@@ -4,35 +4,59 @@
 
 	<div class="text-center">
 		<br><br>
-
-		<div class="jumbotron" id="postdeployment-jumbotron">
-			<h4>Post-Deployment Tools</h4>
-			<br>
-			<%= button_to 'STEP 1: Upload System Files', edit_user_path(@user), class: "btn btn-danger", method: 'get' %>
-			<br>
-			<%= button_to 'STEP 2: Update System Files', {action: 'reinitialize_files'}, class: "btn btn-warning", method: 'get' %>
-			<br>
-			<%= button_to 'STEP 3: Start Scheduler', {action: 'start_scheduler'}, class: "btn btn-primary", method: 'get' %>
-			<br>
-			<%= button_to 'Sidekiq Dashboard', '/sidekiq' , class: "btn btn-info", method: 'get' %>
-			<br>
+		<div class="panel panel-default" id="postdeployment-jumbotron">
+			<div class="panel-heading">
+				<h4>Share Counts of http://dannycarvalho.com</h4>
+			</div>
+			<div class="panel-body">
+				<div id="social-share-counter">
+				<%= button_to 'Get Share Counts',  {:action => 'check_social_count'}, class: "btn btn-primary", method: 'get', remote: true %>
+				</div>
+			</div>
 		</div>
-		<br><br>
-		<%= link_to 'Back', users_path %> |
-		<%= link_to 'Update Events', :action => 'update_events' %> | 
-		<%= link_to 'Email The Townsfolks', :action => 'send_emails' %> |
-		<%= link_to 'You do the Tube', :action => 'update_youtube' %> |
-		<%= link_to 'Blog it baby', :action => 'update_blogger' %> |
-		<%= link_to 'What About It', :action => 'update_about' %> |
-		<%= link_to 'Learn Your Instagrammars', :action => 'update_instagram' %>
-
+		<div class="panel panel-default" id="postdeployment-jumbotron">
+			<div class="panel-heading">
+				<h4>Post-Deployment Tools</h4>
+			</div>
+				<div class="panel-body" id="admin-buttons">
+				<%= button_to 'STEP 1: Upload System Files', edit_user_path(@user), class: "btn btn-danger", method: 'get' %>
+				<%= button_to 'STEP 2: Update System Files', {action: 'reinitialize_files'}, class: "btn btn-warning", method: 'get' %>
+				<%= button_to 'STEP 3: Start Scheduler', {action: 'start_scheduler'}, class: "btn btn-primary", method: 'get' %>
+				<%= button_to 'Sidekiq Dashboard', '/sidekiq' , class: "btn btn-info", method: 'get' %>
+			</div>
+		</div>
+		<div class="panel panel-default" id="postdeployment-jumbotron">
+			<div class="panel-heading">
+				<h4>Manually Update Database</h4>
+			</div>
+			<div class="panel-body" id="admin-buttons">
+				<%= button_to 'Google Calendar', {:action => 'update_events'}, class: "btn btn-default", method: 'get' %>
+				<%= button_to 'YouTube', {:action => 'update_youtube'}, class: "btn btn-default", method: 'get' %>
+				<%= button_to 'Blogger Blogs', {:action => 'update_blogger'}, class: "btn btn-default", method: 'get' %>
+				<%= button_to 'Blogger About Page', {:action => 'update_about'}, class: "btn btn-default", method: 'get' %>
+				<%= button_to 'Instagram', {:action => 'update_instagram'}, class: "btn btn-default", method: 'get' %>
+			</div>
+		</div>
+		<div class="panel panel-default" id="postdeployment-jumbotron">
+			<div class="panel-heading">
+				<h4>Email Center</h4>
+			</div>
+			<div class="panel-body">
+				<%= form_tag( user_path(current_user) + '/send_custom_emails' , method: 'get') do %>
+					<%= text_area_tag :custom_text, nil, class: 'form-control' %>
+					<br>
+					<%= submit_tag 'Send Custom Email', class: "btn btn-default"%>
+				<% end %>
+			</div>
+			<br>
+			<div class="panel-body">
+				<%= form_tag( user_path(current_user) + '/send_event_emails' , method: 'get') do %>
+					<%= select_tag 'selected_events', options_from_collection_for_select(@events, :id, :get_info), multiple: true, size: 10, class: 'form-control' %>
+					<br>
+					<%= submit_tag 'Send Event Email', class: "btn btn-default"%>
+				<% end %>
+			</div>
+		</div>
 	</div>
-	<br>
-
-	<%= form_tag( user_path(current_user) + '/send_custom_emails' , method: 'get') do %>
-	<%= label_tag(:custom_text, "Email content") %>
-	<%= text_area_tag :custom_text %>
-	<%= submit_tag 'Send it Custom Baby'%>
-	<% end %>
-	<br>
 </div>
+<br>

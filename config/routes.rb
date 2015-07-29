@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   root 'alohas#index'
 
   get 'users/:id/update_events' => 'users#update_events'
-  get 'users/:id/send_emails' => 'users#send_emails'
+  get 'users/:id/send_event_emails' => 'users#send_event_emails'
   get 'users/:id/update_youtube' => 'users#update_youtube'
   get 'users/:id/update_blogger' => 'users#update_blogger'
   get 'users/:id/update_about' => 'users#update_about'
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'users/:id/send_custom_emails' => 'users#send_custom_emails'
   get 'users/:id/reinitialize_files' => 'users#reinitialize_files'
   get 'users/:id/start_scheduler' => 'users#start_scheduler'
+  get 'users/:id/check_social_count' => 'users#check_social_count'
   get 'about' => 'alohas#about'
   get 'unsubscribe' => 'subscribers#unsubscribe'
   delete 'unsubscribe' => 'subscribers#destroy'

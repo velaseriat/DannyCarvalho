@@ -1,0 +1,26 @@
+<div class="table-responsive">
+    <table class="table table-striped table-bordered text-center" id="counts-table">
+      <thead>
+        <tr>
+          <th class="text-center">Facebook</th>
+          <th class="text-center">Twitter</th>
+          <th class="text-center">LinkedIn</th>
+          <th class="text-center">Google+</th>
+          <th class="text-center">Reddit</th>
+          <th class="text-center">Delicious</th>
+          <th class="text-center">Pinterest</th>
+        </tr>
+      </thead>
+      <tbody>
+         <tr>
+           <td><%= @counts[:facebook][:total_count]%></td>
+           <td><%= @counts[:twitter] %></td>
+           <td><%= @counts[:linkedin] %></td>
+           <td><%= @counts[:googleplus] %></td>
+           <td><%= @counts[:reddit] %></td>
+           <td><%= @counts[:delicious] %></td>
+           <td><%= @counts[:pinterest] %></td>
+         </tr>
+      </tbody>
+    </table>
+  </div>
