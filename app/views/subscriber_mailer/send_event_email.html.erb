@@ -284,6 +284,11 @@
     text-decoration:underline;
   }
   /*----end footer content----*/
+  .image-holder{
+    text-align: center;
+    height: 200px;
+  }
+
   </style>
 </head>
 <body>
@@ -319,12 +324,17 @@
 			<div class="common_content">
         <h1>Save the date!</h1>
         <% @events.each do |e| %>
+          <% unless e.image_filepath.nil? %>
+            <div class="image-holder">
+              <%= image_tag e.image_filepath %>
+            </div>
+          <% end %>
+          <br>
           <p><%= e.dateTime.strftime("%m/%d") %></p>
           <br>
-          <h1>What's up?</h1>
 				  <p><%= e.description %></p>
           <br>
-          <p><%=link_to e, 'More details' %></p>
+          <p><%=link_to 'More details', e %></p>
           <br><br>
         <% end %>
 			</div>
