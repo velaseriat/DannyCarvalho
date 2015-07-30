@@ -323,19 +323,18 @@
 
 			<div class="common_content">
         <h1>Save the date!</h1>
+        <hr>
         <% @events.each do |e| %>
-          <% unless e.image_filepath.file.nil? %>
-            <div class="image-holder">
-              <img src=<%= 'http://pacific-eyrie-6322.herokuapp.com' + e.image_filepath.to_s %>>
-            </div>
-          <% end %>
           <br>
-          <p><%= e.dateTime.strftime("%m/%d") %></p>
-          <br>
+          <h3><%= e.dateTime.strftime("%m/%d @ %H:%M %Z") %>
+            <br>
+            <%= e.summary %>
+          </h3>
 				  <p><%= e.description %></p>
           <br>
           <p><%=link_to 'More details', event_path(e) %></p>
-          <br><br>
+          <br>
+          <hr>
         <% end %>
 			</div>
 			<div class="top_content">
