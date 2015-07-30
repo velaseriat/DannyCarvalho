@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'users/:id/reinitialize_files' => 'users#reinitialize_files'
   get 'users/:id/start_scheduler' => 'users#start_scheduler'
   get 'users/:id/check_social_count' => 'users#check_social_count'
+   get 'users/:id/console' => 'users#console'
   get 'about' => 'alohas#about'
   get 'unsubscribe' => 'subscribers#unsubscribe'
   delete 'unsubscribe' => 'subscribers#destroy'

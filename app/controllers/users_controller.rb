@@ -6,6 +6,16 @@ class UsersController < ApplicationController
   require 'rufus-scheduler'
   require 'share-counter'
 
+  def console
+    if !user_signed_in?
+      redirect_to :root
+    else
+      respond_to do |format|
+        format.html { render 'console' }
+      end
+    end
+  end
+
   def check_social_count
     if !user_signed_in?
       redirect_to :root
