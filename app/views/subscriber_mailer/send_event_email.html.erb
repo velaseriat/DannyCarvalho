@@ -1,9 +1,9 @@
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <title>Template 2</title>
-  <meta name="description" content="A description of your website">
-  <meta name="keywords" content="keyword1, keyword2, keyword3">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Danny Carvalho Music</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
   /* General Reset */
   html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, hr, button {
@@ -140,7 +140,7 @@
   }
 
   #header .top_banner{
-    background:url(http://pacific-eyrie-6322.herokuapp.com/images/email.jpg) no-repeat left top;
+    background:url('http://pacific-eyrie-6322.herokuapp.com/images/email.jpg') no-repeat left top;
     height:190px;
     padding:20px;
     border:#DDDDDD solid 1px;
@@ -298,7 +298,7 @@
 		<div id="header"> 
 			<div class="top_banner">
 				<div id="header-text">
-					<h1>Danny Carvalho</h1>
+					<h1>Danny Carvalho Music</h1>
 					<p>Subscriber Newsletter</p>
 				</div>
 			</div>
@@ -324,7 +324,7 @@
 			<div class="common_content">
         <h1>Save the date!</h1>
         <% @events.each do |e| %>
-          <% unless e.image_filepath.nil? %>
+          <% unless e.image_filepath.file.nil? %>
             <div class="image-holder">
               <img src=<%= 'http://pacific-eyrie-6322.herokuapp.com' + e.image_filepath.to_s %>>
             </div>
@@ -358,3 +358,4 @@
 	</div>
 
 	</body>
+</html>
