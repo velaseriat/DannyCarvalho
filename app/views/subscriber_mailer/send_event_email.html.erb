@@ -57,7 +57,7 @@
                                             <font size="4" face="verdana" color="#FFFFFF"><%= e.dateTime.strftime("%m/%d @ %H:%M %Z") %> - <%= e.summary %></font>
                                         </h3>
                                         <p><font size="3" face="verdana" color="#FFFFFF"><%= e.description %></font></p>
-                                        <p><font size="3" face="verdana" color="#FFFFFF"><%=link_to 'More details', event_path(e) %></font></p>
+                                        <p><font size="3" face="verdana" color="#FFFFFF"><%=link_to 'More details', 'http://pacific-eyrie-6322.herokuapp.com/' + event_path(e) %></font></p>
                                         <hr>
                                     <% end %>
                                 </td>
