@@ -1,342 +1,94 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Danny Carvalho Music</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <style>
-  /* General Reset */
-  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, hr, button {
-    margin:0;
-    padding:0;
-    border:0;
-    outline:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:none;
-  }
-
-  ol, ul {
-    list-style-type:none;
-  }
-
-  h1, h2, h3, h4, h5, h6, li {
-    line-height:100%;
-  }
-
-  blockquote, q {
-    quotes:none;
-  }
-
-  q:before, q:after {
-    content:"";
-  }
-
-  table {
-    border-collapse:collapse;
-    border-spacing:0;
-  }
-
-  input, textarea, select {
-    font:12px Arial, Helvetica, sans-serif;
-    vertical-align:middle;
-    padding:0;
-    margin:0;
-  }
-
-  textarea {
-    overflow:auto;
-    resize:none;
-  }
-
-  body {
-    margin:0px;
-    padding:0px;
-    font-size:13px;
-    line-height:21px;
-    color:#DDDDDD;
-    font-family:Arial, Helvetica, sans-serif;
-    background-color:black;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-weight:normal;
-  }
-
-  h1 {
-    font-size:33px;
-    margin-bottom:15px;
-  }
-
-  h2 {
-    font-size:25px;
-    margin-bottom:15px;
-  }
-
-  h3 {
-    font-size:18px;
-    margin-bottom:15px;
-  }
-
-  h4 {
-    font-size:16px;
-    margin-bottom:15px;
-  }
-
-  h5 {
-    font-size:14px;
-    margin-bottom:15px;
-  }
-
-  h6 {
-    font-size:12px;
-    margin-bottom:15px;
-  }
-
-  /*  links
-  ******************************/
-  a {color: #DDDDDD;text-decoration: underline;}
-  a:hover {color: #DDDDDD;text-decoration: none;}
-
-  /*  superscript and subscript
-  ******************************/
-  sup, sub {vertical-align: baseline;position: relative;top: -0.4em;}
-  sub { top: 0.4em; }
-  
-  /*  lists
-  ******************************/
-  ul, ol {padding:0;margin:0;}
-  ul li {list-style-type:disc;}
-  ol li {list-style-type:decimal;}
-  ul li,
-  ol li {font-size: 12px; line-height: 14px;margin: 0 0 10px 15px;}
-
-  /*  tables
-  ******************************/
-  table,th,td {border:1px solid #DDDDDD;}
-  th {padding:3px; font-weight:bold;color:#DDDDDD;}
-  tr {margin:0 0 5px 0;padding:3px;}
-  td {padding:5px;margin:0 1px;}
-  
-  /*  horizontal lines
-  ******************************/
-  hr {border-bottom: 1px solid #DDDDDD;margin:5px 0;padding:0;height:2px;width:100%; margin-bottom:10px;}
-
-  .copyright {
-    border: 0px;
-    height: 1px;
-    width: 1px;
-  }
-
-  #wrapper {
-    width:700px;
-    margin:0 auto;
-    padding:20px 0 10px 0;
-  }
-
-  /*----start header----*/
-  #header {
-    padding:0px 0px 20px;
-  }
-
-  #header .top_banner{
-    background:url('http://pacific-eyrie-6322.herokuapp.com/images/email.jpg') no-repeat left top;
-    height:190px;
-    padding:20px;
-    border:#DDDDDD solid 1px;
-    margin-bottom:10px;
-    text-align: right;
-  }
-
-  #header h1{
-    font-size:32px;
-    color:#FFFFFF;
-    margin:0px;
-    padding:0px 0px 10px;
-  }
-
-  #header h1 a {
-    color:#DDDDDD;
-    text-decoration: none;
-  }
-
-  #header h1 a:hover {
-    text-decoration: none;
-  }
-
-  #header p{
-    font-size:16px;
-    margin-left:1px;
-    color:#DDDDDD;
-  }
-
-  .navigation{
-    margin-bottom:5px;
-    padding:13px 5px;
-    background: rgb(29, 29, 29);
-  }
-
-  .navigation ul{
-    margin:0px;
-    padding:0px;
-  }
-
-  .navigation ul li{
-    margin:0px;
-    padding:0px 35px;
-    display:inline;
-    font-size:14px;
-    list-style-type:none;
-  }
-
-  .navigation ul li a{
-    color:#DDDDDD;
-    text-decoration:none;
-  }
-
-  .navigation ul li a:hover{
-    text-decoration:underline;
-  }
-
-  .navigation ul li:last-child {
-    border-right:none;
-  }
-  /*----end header----*/
-
-
-  /*----start page content----*/
-  #page_content{
-    padding:0px 0px 20px;
-  }
-
-  #page_content .right_section{
-    width:650px;
-    float:right;
-  }
-
-  #page_content .right_section .top_content{
-    padding:15px 0 0px 0;
-  }
-
-  #page_content .right_section .top_content .column_one{
-    width:300px;
-    float:left;
-    margin-bottom:20px;
-  }
-
-  #page_content .right_section .top_content .column_two{
-    width:300px;
-    float:right;
-    margin-bottom:20px;
-  }
-
-  a.btn{
-    color:#AAAAAA;
-    font-size:12px;
-    text-decoration:none;
-    padding:6px 13px 6px 13px;
-    font-weight:bold;
-    display:inline-block;
-    border:#AAAAAA solid 1px;
-    background-color:#97aaae;
-  }
-
-  a.btn:hover{
-    text-decoration:none;
-  }
-
-  .common_content{
-    padding:0 0 20px 0;
-  }
-
-  .border_left{
-    border-left:#DDDDDD dotted 1px;
-    padding-left:20px;
-
-  }
-
-  .border_none{
-    border:none!important;
-    margin:0px!important;
-  }
-
-
-  /*----start footer content----*/
-  #footer{
-    clear:both;
-    margin-top:18px;
-    padding:15px 0 0px 0;
-    height:25px;
-    text-align:center;
-    font-family:Verdana, Geneva, sans-serif;
-    font-size:12px;
-    line-height:19px;
-    border-top:#DDDDDD solid 1px;
-  }
-
-  #footer a{
-    color: #2a9fd6;
-    text-decoration:none;
-  }
-
-  #footer a:hover{
-    color: #2a9fd6;
-    text-decoration:underline;
-  }
-
-  /*----end footer content----*/
-  </style>
-</head>
-<body>
-
-  <div id="wrapper"> 
-
-    <div id="header"> 
-      <div class="top_banner">
-        <div id="header-text">
-          <h1>Danny Carvalho</h1>
-          <p>Subscriber Newsletter</p>
-        </div>
-      </div>
-
-      <div class="navigation">
-        <ul>
-          <li><a href="http://www.dannycarvalho.com">Home</a></li>
-          <li><a href="http://www.dannycarvalho.com/events">Gigs</a></li>
-          <li><a href="http://www.dannycarvalho.com/music">Music</a></li>
-          <li><a href="http://www.dannycarvalho.com/videos">Videos</a></li>
-          <li><a href="http://www.dannycarvalho.com/products">Store</a></li>
-          <li><a href="http://www.dannycarvalho.com/blogs">Blogs</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div id="page_content"> 
-
-
-
-
-      <div class="common_content">
-        <%= @text.html_safe %>
-      </div>
-      <div class="top_content">
-
-
-
-        <div class="clear"></div>
-
-        <!--start footer from here-->
-        <div id="footer">Copyright &copy; 2015. Design by <a href="http://www.dannycarvalho.com/" target="_blank">Danny Carvalho</a><br>
-          <%= link_to 'Unsubscribe',  'http://pacific-eyrie-6322.herokuapp.com' + unsubscribe_path + '?subscriber_email=' + @subscriber.email %>
-        </div>
-
-        <!--/. end footer from here-->
-      </div>
-
-    </div>
-
-  </div>
-
-  </body>
-</html>
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+    <tr>
+        <td align="center" valign="top">
+            <table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer">
+                <tr>
+                    <td align="center" valign="top" style="padding-bottom:5px">
+                        <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
+                            <tr>
+                                <td align="center" valign="top" style="padding-bottom:0px;">
+                                    <img style="float:left" width="600" src="http://pacific-eyrie-6322.herokuapp.com/images/email.jpg">
+                                    <table style="position:absolute" border="0" cellpadding="20" cellspacing="0" width="600" id="emailTitle">
+                                        <tr>
+                                            <td align="center" valign="top">
+                                                <h1 style="margin:10px"><font face="verdana" color="#FFFFFF">Danny Carvalho Music</font></h1>
+                                                <h3 style="margin:10px"><font face="verdana" color="#FFFFFF">Subscriber Newsletter</font></h3>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" style="padding-top:0px;padding-bottom:0px">
+                                    <table style="margin-top:5px" border="0" cellpadding="20" cellspacing="0" width="600" id="emailTitle">
+                                        <tr>
+                                            <td align="center" valign="top" style="padding-bottom:10px;padding-top:10px;background:#111">
+                                                <a href="http://www.dannycarvalho.com" style="margin:10px;text-decoration:none"><font size="4" face="verdana" color="#FFFFFF">Home</font></a>
+                                            </td>
+                                            <td align="center" valign="top" style="padding-bottom:10px;padding-top:10px;background:#111">
+                                                <a href="http://www.dannycarvalho.com/events" style="margin:10px;text-decoration:none"><font size="4" face="verdana" color="#FFFFFF">Gigs</font></a>
+                                            </td>
+                                            <td align="center" valign="top" style="padding-bottom:10px;padding-top:10px;background:#111">
+                                                <a href="http://www.dannycarvalho.com/products" style="margin:10px;text-decoration:none"><font size="4" face="verdana" color="#FFFFFF">Store</font></a>
+                                            </td>
+                                            <td align="center" valign="top" style="padding-bottom:10px;padding-top:10px;background:#111">
+                                                <a href="http://www.dannycarvalho.com/albums" style="margin:10px;text-decoration:none"><font size="4" face="verdana" color="#FFFFFF">Music</font></a>
+                                            </td>
+                                            <td align="center" valign="top" style="padding-bottom:10px;padding-top:10px;background:#111">
+                                                <a href="http://www.dannycarvalho.com/videos" style="margin:10px;text-decoration:none"><font size="4" face="verdana" color="#FFFFFF">Videos</font></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" style="padding-top:0px;padding-bottom:0px;padding-left:40px;padding-right:40px">
+                        <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailBody">
+                            <tr>
+                                <td align="center" style="background:#000">
+                                    <h1><font face="verdana" color="#FFFFFF">Upcoming Gigs!</font></h1>
+                                    <p>
+                                        <font face="verdana" color="#FFFFFF">
+                                            I have a few gigs coming up and it would be lot of fun if you can come and join me! You can check them out below, or you can click on 'more details' to take you to my website for further information.
+                                        </font>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" style="padding-top:0px;padding-bottom:0px;background:#000">
+                                    <% @events.each do |e| %>
+                                        <br>
+                                        <h3 style="margin-top:0px;">
+                                            <font size="4" face="verdana" color="#FFFFFF"><%= e.dateTime.strftime("%m/%d @ %H:%M %Z") %> - <%= e.summary %></font>
+                                        </h3>
+                                        <p><font size="3" face="verdana" color="#FFFFFF"><%= e.description %></font></p>
+                                        <p><font size="3" face="verdana" color="#FFFFFF"><%=link_to 'More details', event_path(e) %></font></p>
+                                        <hr>
+                                    <% end %>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" style="padding-top:5px;padding-left:40px;padding-right:40px">
+                        <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailFooter">
+                            <tr>
+                                <td align="center" valign="top" style="background:#111">
+                                    <font face="verdana" size="2" color="#FFFFFF">
+                                        Copyright &copy; 2015. Design by <a href="http://www.dannycarvalho.com/" target="_blank">Danny Carvalho</a>
+                                        <br>
+                                        <%= link_to 'Unsubscribe',  'http://pacific-eyrie-6322.herokuapp.com' + unsubscribe_path + '?subscriber_email=' + @subscriber.email %>
+                                    </font>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
