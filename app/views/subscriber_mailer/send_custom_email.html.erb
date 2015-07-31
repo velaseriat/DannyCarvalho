@@ -49,25 +49,12 @@
                         <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailBody">
                             <tr>
                                 <td align="center" style="background:#000">
-                                    <h1><font face="verdana" color="#FFFFFF">Upcoming Gigs!</font></h1>
+                                    <h1><font face="verdana" color="#FFFFFF">Message from Danny Carvalho</font></h1>
                                     <p>
                                         <font face="verdana" color="#FFFFFF">
-                                            I have a few gigs coming up and it would be lot of fun if you can come and join me! You can check them out below, or you can click on 'more details' to take you to my website for further information.
+                                            <%= @text.html_safe %>
                                         </font>
                                     </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" valign="top" style="padding-top:0px;padding-bottom:0px;background:#000">
-                                    <% @events.each do |e| %>
-                                        <br>
-                                        <h3 style="margin-top:0px;">
-                                            <font size="4" face="verdana" color="#FFFFFF"><%= e.dateTime.strftime("%m/%d @ %H:%M %Z") %> - <%= e.summary %></font>
-                                        </h3>
-                                        <p><font size="3" face="verdana" color="#FFFFFF"><%= e.description %></font></p>
-                                        <p><font size="3" face="verdana" color="#FFFFFF"><%=link_to 'More details', event_path(e) %></font></p>
-                                        <hr>
-                                    <% end %>
                                 </td>
                             </tr>
                         </table>

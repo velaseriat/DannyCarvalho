@@ -3,7 +3,7 @@
         <td align="center" valign="top">
             <table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer">
                 <tr>
-                    <td align="center" valign="top">
+                    <td align="center" valign="top" style="padding-bottom:5px">
                         <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                             <tr>
                                 <td align="center" valign="top" style="padding-bottom:0px;">
@@ -19,7 +19,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" valign="top" style="padding-top:0px">
+                                <td align="center" valign="top" style="padding-top:0px;padding-bottom:0px">
                                     <table style="margin-top:5px" border="0" cellpadding="20" cellspacing="0" width="600" id="emailTitle">
                                         <tr>
                                             <td align="center" valign="top" style="padding-bottom:10px;padding-top:10px;background:#111">
@@ -52,16 +52,29 @@
                                     <h1><font face="verdana" color="#FFFFFF">Upcoming Gigs!</font></h1>
                                     <p>
                                         <font face="verdana" color="#FFFFFF">
-                                            <%= @text.html_safe %>
+                                            I have a few gigs coming up and it would be lot of fun if you can come and join me! You can check them out below, or you can click on 'more details' to take you to my website for further information.
                                         </font>
                                     </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="top" style="padding-top:0px;padding-bottom:0px;background:#000">
+                                    <% @events.each do |e| %>
+                                        <br>
+                                        <h3 style="margin-top:0px;">
+                                            <font size="4" face="verdana" color="#FFFFFF"><%= e.dateTime.strftime("%m/%d @ %H:%M %Z") %> - <%= e.summary %></font>
+                                        </h3>
+                                        <p><font size="3" face="verdana" color="#FFFFFF"><%= e.description %></font></p>
+                                        <p><font size="3" face="verdana" color="#FFFFFF"><%=link_to 'More details', event_path(e) %></font></p>
+                                        <hr>
+                                    <% end %>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" valign="top" style="padding-left:40px;padding-right:40px">
+                    <td align="center" valign="top" style="padding-top:5px;padding-left:40px;padding-right:40px">
                         <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailFooter">
                             <tr>
                                 <td align="center" valign="top" style="background:#111">
