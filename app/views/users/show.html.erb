@@ -41,6 +41,9 @@
 			<div class="panel-heading">
 				<h4>Email Center</h4>
 			</div>
+			<p class="lead text-info text-center">
+				If you plan on adding images to your custom email, please set width='580' in the 'img' tag
+			<p>
 			<div class="panel-body">
 				<%= form_tag( user_path(current_user) + '/send_custom_emails' , method: 'get') do %>
 					<%= text_area_tag :custom_text, nil, class: 'form-control' %>
