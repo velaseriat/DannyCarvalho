@@ -20,7 +20,7 @@
       <tbody>
         <% @igrams.each do |igram| %>
           <tr>
-            <td><%= image_tag igram.image_path, {height: 50} %></td>
+            <td><%= image_tag igram.image_path.thumbnail.to_s, {height: 50} %></td>
             <td><%= igram.link %></td>
             <td><%= igram.text %></td>
             <td><%= igram.dateTime %></td>
@@ -57,7 +57,7 @@
                   </div>
                   <div class="text-center">
                     <% if !ig.image_path.file.nil? %>
-                      <%= image_tag ig.image_path %>
+                      <%= image_tag ig.image_path.thumbnail.to_s %>
                     <% else %>
                       <%= image_tag "default.jpg" %>
                     <% end %>

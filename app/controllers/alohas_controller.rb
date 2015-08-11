@@ -17,9 +17,9 @@ class AlohasController < ApplicationController
     @event2 = threeEvents.second
     @event3 = threeEvents.third
 
-    @event1_image = !@event1.image_filepath.file.nil? ? @event1.image_filepath : 'default.jpg'
-    @event2_image = !@event2.image_filepath.file.nil? ? @event2.image_filepath : 'default.jpg'
-    @event3_image = !@event3.image_filepath.file.nil? ? @event3.image_filepath : 'default.jpg'
+    @event1_image = !@event1.image_filepath.standard.nil? ? @event1.image_filepath.standard.to_s : 'default.jpg'
+    @event2_image = !@event2.image_filepath.standard.nil? ? @event2.image_filepath.standard.to_s : 'default.jpg'
+    @event3_image = !@event3.image_filepath.standard.nil? ? @event3.image_filepath.standard.to_s : 'default.jpg'
 
     d1 = @event1.dateTime.to_s.match('\d{4}[-]\d{2}[-]\d{2}').to_s.split('-')
     @date1 = d1[1] + "/" + d1[2] + "/" + d1[0]
@@ -31,6 +31,12 @@ class AlohasController < ApplicationController
     @video1 = Video.first
     @video2 = Video.second
     @video3 = Video.third
+
+    @album1 = Album.order(:release).first
+
+    @products = Product.order(:release)
+    @product1 = @products.first
+    @product2 = @products.second
   end
 
   # GET /alohas/1

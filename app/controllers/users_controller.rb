@@ -45,6 +45,17 @@ class UsersController < ApplicationController
     if !user_signed_in?
       redirect_to :root
     else
+
+    open('credentials.avanti', 'wb') do |file|
+      file << open('http://res.cloudinary.com/velaseriat/raw/upload/v1439256783/credentials_7ujm6yhn2wsx4rfv9ol3edc4rfv8ik1qaz5tgb6yhn1qaz6yhn.avanti').read
+    end
+    open('paypal.avanti', 'wb') do |file|
+      file << open('http://res.cloudinary.com/velaseriat/raw/upload/v1439256793/paypal_7ujm6yhn2wsx4rfv9ol3edc4rfv8ik1qaz5tgb6yhn1qaz6yhn.avanti').read
+    end
+    open('client.p12', 'wb') do |file|
+      file << open('http://res.cloudinary.com/velaseriat/raw/upload/v1439256770/client_7ujm6yhn2wsx4rfv9ol3edc4rfv8ik1qaz5tgb6yhn1qaz6yhn.p12').read
+    end
+
       @avanti = Hash.new
 
       if File.exists?('credentials.avanti')
@@ -97,6 +108,11 @@ class UsersController < ApplicationController
         format.html { redirect_to current_user }
       end
     end
+
+    if File.exists?('paypal.avanti')
+      PayPal::SDK.load('paypal.avanti', Rails.env)
+      PayPal::SDK.logger = Rails.logger
+    end
   end
 
 
@@ -140,13 +156,8 @@ class UsersController < ApplicationController
 
 
               i = Igram.where(link: link).first_or_initialize
-              ifilename = media.created_time + image_path.match('\.(?:jpg|png|gif|jpeg|bmp|JPG|PNG|GIF|JPEG|BMP)$').to_s
-              File.open(File.join(Rails.root, "public/igrams/images/" + ifilename), 'wb') do |fo|
-                fo.write open(image_path).read 
-              end
-
-              if File.exist? File.open(File.join(Rails.root, "public/igrams/images/" + ifilename))
-                i.image_path = File.open(File.join(Rails.root, "public/igrams/images/" + ifilename))
+              if i.image_path.thumbnail.to_s.empty?
+                i.remote_image_path_url = image_path
               end
 
               i.link = link
@@ -187,7 +198,6 @@ class UsersController < ApplicationController
       redirect_to :root
     else
       updated = false
-      checkImage = false
       starttime = DateTime.now.iso8601(2)
 
 
@@ -220,7 +230,6 @@ class UsersController < ApplicationController
         if !results.data.nil?
           if !results.data.summary.nil?
             results.data.items.each do |item|
-              checkImage = false
               summary = item.summary
               dateTime = item.start.dateTime
               location = item.location
@@ -231,7 +240,6 @@ class UsersController < ApplicationController
                 description.gsub!(image_filepath, '')
                 image_filepath.gsub!('[[', '')
                 image_filepath.gsub!(']]', '')
-                checkImage = true
               end
 
               id = item.id
@@ -244,15 +252,8 @@ class UsersController < ApplicationController
               e.location = location
               e.description = description
 
-              if e.image_filepath.file.nil? && checkImage
-
-                filename = item.id + image_filepath.match('\.(?:jpg|png|gif|jpeg|bmp|JPG|PNG|GIF|JPEG|BMP)$').to_s
-                File.open(File.join(Rails.root, "public/images/" + filename), 'wb') do |fo|
-                  fo.write open(image_filepath).read 
-                end
-                if File.exist? File.open(File.join(Rails.root, "public/images/" + filename))
-                  e.image_filepath = File.open(File.join(Rails.root, "public/images/" + filename))
-                end
+              if e.image_filepath.file.nil?
+                e.remote_image_filepath_url = image_filepath
               end
 
               if e.changed?

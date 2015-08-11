@@ -1,17 +1,17 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class ProductImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
   
   process :convert => 'png'
-  process :tags => ['gigs', 'danny_carvalho']
+  process :tags => ['product_image', 'danny_carvalho']
 
   version :standard do
-    process :resize_to_fit => [1000, 500, :north]
+    process :resize_to_fit => [500, 500, :north]
   end
   
   version :thumbnail do
-    resize_to_fill(357, 250)
+    resize_to_fill(250, 250)
   end
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -24,7 +24,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   # def store_dir
-  #   "events/images"
+  #   "products/images"
   # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

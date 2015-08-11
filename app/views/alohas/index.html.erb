@@ -141,9 +141,7 @@ $(document).ready( function() {
           </div>
           <div id="eventCollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="eventHeadingThree">
             <div class="panel-body" id="my-panel-body"><div class="speciall">
-              <% if !@event3.image_filepath.file.nil? %>
-                <%= image_tag @event3.image_filepath, class: "img-responsive center-block" %>
-              <% end %>
+              <%= image_tag @event3_image, class: "img-responsive center-block" %>
               <br>
               <%= @event3.description %>
               <br><br>

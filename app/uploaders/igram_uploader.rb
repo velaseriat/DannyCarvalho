@@ -1,20 +1,28 @@
 # encoding: utf-8
 
 class IgramUploader < CarrierWave::Uploader::Base
-
+  include Cloudinary::CarrierWave
+  
+  process :convert => 'png'
+  process :tags => ['igrams', 'danny_carvalho']
+  
+  version :thumbnail do
+    resize_to_fill(250, 250)
+  end
+  
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "igrams/images"
-  end
+  # def store_dir
+  #   "igrams/images"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url

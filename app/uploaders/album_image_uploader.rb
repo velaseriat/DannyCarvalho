@@ -1,20 +1,31 @@
 # encoding: utf-8
 
-class SongUploader < CarrierWave::Uploader::Base
+class AlbumImageUploader < CarrierWave::Uploader::Base
+  include Cloudinary::CarrierWave
+  
+  process :convert => 'png'
+  process :tags => ['product_image', 'danny_carvalho']
 
+  version :standard do
+    process :resize_to_fit => [500, 500, :north]
+  end
+  
+  version :thumbnail do
+    resize_to_fill(250, 250)
+  end
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "music"
-  end
+  # def store_dir
+  #   "albums/images"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url

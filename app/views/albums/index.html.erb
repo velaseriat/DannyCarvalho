@@ -1,45 +1,65 @@
 <div class="spaces"></div>
-<span><h1 class="text-center">Albums<small> Basically, what the site is supposed to feature</small></h1>
+<h1 class="text-center">Albums<small> Basically, what the site is supposed to feature</small></h1>
+<% if user_signed_in? %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Description</th>
+        <th>Released</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-<% if @albums.count > 0 %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @albums.each do |album| %>
+    <tbody>
+      <% @albums.each do |album| %>
       <tr>
         <td><%= album.name %></td>
-        <td><%= album.year %></td>
+        <td><%= album.release.strftime("%m/%d/%y") %></td>
+        <td><%= album.description %></td>
+        <td><%= album.release.strftime("%B %Y") %></td>
         <td><%= link_to 'Show', album %></td>
         <% if user_signed_in? %>
-          <td><%= link_to 'Edit', edit_album_path(album) %></td>
-          <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_album_path(album) %></td>
+        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <% end %>
 <br>
 <% if user_signed_in? %>
-  <%= link_to 'New Album', new_album_path %>
+<%= link_to 'New Album', new_album_path %>
 <% end %>
 
-<br><br>
+<br>
+
+<br>
 <div class="container">
+  <% @albums.each do |album| %>
   <div class="row">
-    <div class="col-md-6">
-      <iframe style="border: 0; width: 100%; height: 600px;" src="http://bandcamp.com/EmbeddedPlayer/album=2264718191/size=large/bgcol=333333/linkcol=0f91ff/artwork=small/transparent=true/" seamless><a href="http://chipzel.co.uk/album/interstellaria-ost">Interstellaria OST by chipzel</a></iframe>
+    <div class="col-md-3">
+      <br>
+      <%= image_tag album.image_filepath.nil? ? 'default.jpg' : album.image_filepath.thumbnail.to_s, class: 'img-responsive', id: 'product-image' %>
+      <br>
     </div>
-    <div class="col-md-6">
-      <iframe style="border: 0; width: 100%; height: 600px;" src="http://bandcamp.com/EmbeddedPlayer/album=644473563/size=large/bgcol=333333/linkcol=0f91ff/artwork=small/transparent=true/" seamless><a href="http://esposthumus.bandcamp.com/album/makara">Makara by E.S. Posthumus</a></iframe>
+    <div class="col-md-9">
+      <br>
+      <p class="lead" id="product-index-title"><%= album.name %></p>
+      <p><%= album.description %></p>
+      <p>Released: <%= album.release.strftime("%B %Y") %></p>
+      <p><%= link_to 'More info', album %></p>
+      <br>
+      <%= button_to "Add to cart", '#', class: 'btn btn-primary',  method: 'get' %>
+      <span class="lead"><%= album.price %></span>
+      
     </div>
   </div>
+  <hr>
+  <% end %>
 </div>
 <br>

@@ -11,6 +11,7 @@
         <th>Data</th>
         <th>Image filepath</th>
         <th>Price</th>
+        <th>Release</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -20,21 +21,83 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= product.data %></td>
-        <td><%= product.image_filepath %></td>
+        <td><%= image_tag product.image_filepath.thumbnail.to_s, {height: 100} %></td>
         <td><%= product.price %></td>
+        <td><%= product.release.strftime("%m/%d/%y") %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
+      <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.name %></td>
+        <td><%= album.description %></td>
+        <td><%= image_tag album.image_filepath.thumbnail.to_s, {height: 100} %></td>
+        <td><%= album.price %></td>
+        <td><%= album.release.strftime("%m/%d/%y") %></td>
+        <td><%= link_to 'Show', album %></td>
+        <td><%= link_to 'Edit', edit_album_path(album) %></td>
+        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
+<%= link_to 'New Product', new_product_path %>
+<% end %>
 
 <br>
+<div class="container">
+  <h3 class="text-center">Merchandise</h3>
+  <% @products.each do |product| %>
+  <div class="row">
+    <div class="col-md-3">
+      <br>
+      <%= image_tag product.image_filepath.nil? ? 'default.jpg' : product.image_filepath.thumbnail.to_s, class: 'img-responsive', id: 'product-image' %>
+      <br>
+    </div>
+    <div class="col-md-9">
+      <br>
+      <p class="lead" id="product-index-title"><%= product.name %></p>
+      <p><%= product.data %></p>
+      <p>Available: <%= product.release.strftime("%B %y") %></p>
+      <p><%= link_to 'More info', product %></p>
+      <br>
+      <span class="lead"><%= product.price %></span>
+      <%= button_to "Add to cart", '#', class: 'btn btn-primary',  method: 'get' %>
+      
+    </div>
+  </div>
+  <hr>
+  <% end %>
+  <h3 class="text-center">Albums</h3>
+  <% @albums.each do |album| %>
+  <div class="row">
+    <div class="col-md-3">
+      <br>
+      <%= image_tag album.image_filepath.nil? ? 'default.jpg' : album.image_filepath.thumbnail.to_s, class: 'img-responsive', id: 'product-image' %>
+      <br>
+    </div>
+    <div class="col-md-9">
+      <br>
+      <p class="lead" id="product-index-title"><%= album.name %></p>
+      <p><%= album.description %></p>
+      <p>Released: <%= album.release.strftime("%B %y") %></p>
+      <p><%= link_to 'More info', album, class: 'text-primary' %></p>
+      <br>
+      <span class="lead"><%= album.price %></span>
+      <%= button_to "Add to cart", '#', class: 'btn btn-primary',  method: 'get' %>
+      
+    </div>
+  </div>
+  <hr>
+  <% end %>
+</div>
+<br>
 
-<%= link_to 'New Product', new_product_path %>
 
-<% end %>
+
+
 
 

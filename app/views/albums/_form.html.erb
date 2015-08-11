@@ -16,8 +16,28 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
+    <%= f.label :release %><br>
+    <%= f.datetime_select :release %>
+  </div>
+  <div class="field">
+    <%= f.label :image_filepath %><br>
+    <%= f.file_field :image_filepath %>
+  </div>
+  <div class="field">
+    <%= f.label :paypal %><br>
+    <%= f.text_field :paypal %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :bandcamp_id  %><br>
+    <%= f.text_field :bandcamp_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

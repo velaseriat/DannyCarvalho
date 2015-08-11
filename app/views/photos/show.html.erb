@@ -10,7 +10,7 @@
     <div class="panel-body" id="blog-show-content">
     	<br>
     	<div id="center-me">
-    		<%= image_tag @photo.image_filepath, class: 'img-responsive' %>
+    		<%= image_tag @photo.image_filepath.standard.to_s, class: 'img-responsive' %>
     	</div>
       <br>
       <%= @photo.text %>
@@ -35,4 +35,3 @@
   <% end %>
   <%= link_to 'All Photos', photos_path %>
 </div>
-<br>

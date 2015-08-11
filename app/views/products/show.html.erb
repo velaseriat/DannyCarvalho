@@ -1,34 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="spaces"></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Data:</strong>
-  <%= @product.data %>
-</p>
-
-<p>
-  <strong>Image filepath:</strong>
-  <%= @product.image_filepath %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h4 id="large-title">Disqus</h4>
-	</div>
-	<div class="panel-body" id="disqus">
-	</div>
-	<div class="panel-footer">
-	</div>
+<div class="container">
+  <h1 class="text-center"><%= @product.name %></h1>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @product.image_filepath.standard.to_s, class: 'img-responsive', id: 'product-image' %>
+      <br>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= @product.name %>
+        </div>
+        <div class="panel-body" id="product-panel">
+          <%= @product.data %>
+          <br>
+          <br>
+          <span class="lead"><%= @product.price %></span>
+          <%= button_to "Add to cart", '#', class: 'btn btn-primary',  method: 'get' %>
+          
+        </div>
+        <div class="panel-footer">
+          Available: <%= " - " + @product.release.strftime("%m/%d/%y") %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 id="large-title">Disqus</h4>
+    </div>
+    <div class="panel-body" id="disqus">
+    </div>
+    <div class="panel-footer">
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_product_path(@product) %> |
+  <% end %>
+  <%= link_to 'All Products', products_path %>
 </div>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>

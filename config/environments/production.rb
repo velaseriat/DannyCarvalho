@@ -78,54 +78,56 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { host: 'dannycarvalho.com', port: 3000 }
 
-  # @avanti = Hash.new
+  config.time_zone = 'Hawaii'
 
-  # if File.exists?('credentials.avanti')
-  #   file = File.open('credentials.avanti', 'r')
-  #   puts "============================================================="
-  #     puts "Your development keys:"
-  #   file.each do |line|
-  #     line.chomp!
-  #     linedata = line.split(':::')
-  #     @avanti[linedata[0]] = linedata[1]
-  #     puts linedata[0] + '  ' + @avanti[linedata[0]]
-  #   end
-  #   puts "============================================================="
-  # end
+  @avanti = Hash.new
 
-  # config.applicationName = @avanti["applicationName"].to_s
-  # config.googleP12 = @avanti["googleP12"].to_s
-  # config.googlePassphrase = @avanti["googlePassphrase"].to_s
-  # config.googleIssuer = @avanti["googleIssuer"].to_s
-  # config.googleCalendarID = @avanti["googleCalendarID"].to_s
-  # config.googleMapKey = @avanti["googleMapKey"].to_s
+  require 'open-uri'
+  open('credentials.avanti', 'wb') do |file|
+    file << open('http://res.cloudinary.com/velaseriat/raw/upload/v1439256783/credentials_7ujm6yhn2wsx4rfv9ol3edc4rfv8ik1qaz5tgb6yhn1qaz6yhn.avanti').read
+  end
+  open('paypal.avanti', 'wb') do |file|
+    file << open('http://res.cloudinary.com/velaseriat/raw/upload/v1439256793/paypal_7ujm6yhn2wsx4rfv9ol3edc4rfv8ik1qaz5tgb6yhn1qaz6yhn.avanti').read
+  end
+  open('client.p12', 'wb') do |file|
+    file << open('http://res.cloudinary.com/velaseriat/raw/upload/v1439256770/client_7ujm6yhn2wsx4rfv9ol3edc4rfv8ik1qaz5tgb6yhn1qaz6yhn.p12').read
+  end
 
-  # #config.twitterConsumerKey = @avanti["twitterConsumerKey"].to_s
-  # #config.twitterConsumerSecret = @avanti["twitterConsumerSecret"].to_s
-  # #config.twitterAccessToken = @avanti["twitterAccessToken"].to_s
-  # #config.twitterAccessTokenSecret = @avanti["twitterAccessTokenSecret"].to_s
+  if File.exists?('credentials.avanti')
+    file = File.open('credentials.avanti', 'r')
+    puts "============================================================="
+      puts "Your development keys:"
+    file.each do |line|
+      line.chomp!
+      linedata = line.split(':::')
+      @avanti[linedata[0]] = linedata[1]
+      puts linedata[0] + '  ' + @avanti[linedata[0]]
+    end
+    puts "============================================================="
+  end
 
-  # config.instagramClientID = @avanti["instagramClientID"].to_s
-  # config.instagramClientSecret = @avanti["instagramClientSecret"].to_s
-  # config.instagramClientRedirectURI = @avanti["instagramClientRedirectURI"].to_s
-  # config.instagramAccessToken = @avanti["instagramAccessToken"].to_s
+  config.applicationName = @avanti["applicationName"].to_s
+  config.googleP12 = @avanti["googleP12"].to_s
+  config.googlePassphrase = @avanti["googlePassphrase"].to_s
+  config.googleIssuer = @avanti["googleIssuer"].to_s
+  config.googleCalendarID = @avanti["googleCalendarID"].to_s
+  config.googleMapKey = @avanti["googleMapKey"].to_s
 
+  config.instagramClientID = @avanti["instagramClientID"].to_s
+  config.instagramClientSecret = @avanti["instagramClientSecret"].to_s
+  config.instagramClientRedirectURI = @avanti["instagramClientRedirectURI"].to_s
+  config.instagramAccessToken = @avanti["instagramAccessToken"].to_s
 
-  # #config.facebookAppID = @avanti["facebookAppID"].to_s
-  # #config.facebookAppSecret = @avanti["facebookAppSecret"].to_s
-  # #config.facebookAppToken = @avanti["facebookAppToken"].to_s
-  # #config.facebookAccessToken = @avanti["facebookAccessToken"].to_s
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              @avanti["emailAddress"],
+    port:                 587,
+    domain:               @avanti["emailDomain"],
+    user_name:            @avanti["emailUserName"],
+    password:             @avanti["emailPassword"],
+    authentication:       'plain',
+    enable_starttls_auto: true  }
 
-  # ENV["SECRET_KEY_BASE"] = @avanti["railsSecret"].to_s
-
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address:              @avanti["emailAddress"],
-  #   port:                 587,
-  #   domain:               @avanti["emailDomain"],
-  #   user_name:            @avanti["emailUserName"],
-  #   password:             @avanti["emailPassword"],
-  #   authentication:       'plain',
-  #   enable_starttls_auto: true  }
+  config.startScheduler = false
 
 end

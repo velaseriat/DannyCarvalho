@@ -18,7 +18,7 @@
       <tbody>
         <% @photos.each do |photo| %>
           <tr>
-            <td><%= image_tag photo.image_filepath, {height: 50} %></td>
+            <td><%= image_tag photo.image_filepath.thumbnail.to_s, {height: 50} %></td>
             <td><%= photo.dateTime %></td>
             <td><%= link_to 'Show', photo %></td>
             <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
@@ -55,7 +55,7 @@
                   </div>
                   <div class="text-center">
                     <% if !ph.image_filepath.file.nil? %>
-                      <%= image_tag ph.image_filepath %>
+                      <%= image_tag ph.image_filepath.thumbnail.to_s %>
                     <% else %>
                       <%= image_tag "default.jpg" %>
                     <% end %>

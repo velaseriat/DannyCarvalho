@@ -57,7 +57,7 @@
                   </div>
                   <div class="text-center">
                     <% if !e.image_filepath.file.nil? %>
-                      <%= image_tag e.image_filepath %>
+                      <%= image_tag e.image_filepath.thumbnail.to_s %>
                     <% else %>
                       <%= image_tag "default.jpg" %>
                     <% end %>

@@ -2,8 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-#music-wrapper{
-	display: block;
+#product-image{
+	border-radius: 5px;
 	margin: 0 auto;
+}
+
+#product-panel{
+	height: 416px;
+}
+
+#product-index-title{
+	color: #FFFFFF;
+}
+#product-price{
+	margin-bottom: 10px;
 }

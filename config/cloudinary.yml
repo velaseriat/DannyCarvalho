@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: velaseriat
+  api_key: '428359188655415'
+  api_secret: m7dvFArXl3wM1c7CZX7BoXTV4VI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: velaseriat
+  api_key: '428359188655415'
+  api_secret: m7dvFArXl3wM1c7CZX7BoXTV4VI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: velaseriat
+  api_key: '428359188655415'
+  api_secret: m7dvFArXl3wM1c7CZX7BoXTV4VI
+  enhance_image_tag: true
+  static_image_support: false

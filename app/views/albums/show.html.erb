@@ -1,24 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="spaces"></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @album.name %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @album.year %>
-</p>
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h4 id="large-title">Disqus</h4>
+<div class="container">
+	<h1 class="text-center"><%= @album.name %></h1>
+	<div class="row">
+		<div class="col-md-5">
+			<iframe style="border: 0; width: 100%; height: 786px;" src=<%= "https://bandcamp.com/EmbeddedPlayer/album=" + @album.bandcamp_id + "/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/" %> seamless><a href="http://bandcamp.com">Danny Carvalho Music</a></iframe>
+		</div>
+		<div class="col-md-5">
+			<%= @album.description %>
+			<br>
+			Released: <%= @album.release.strftime("%B %Y") %>
+			<br>
+			<span class="lead"><%= @album.price %></span>
+			<%= button_to "Add to cart", '#', class: 'btn btn-primary',  method: 'get' %>
+		</div>
 	</div>
-	<div class="panel-body" id="disqus">
-	</div>
-	<div class="panel-footer">
+	<br><br>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 id="large-title">Disqus</h4>
+		</div>
+		<div class="panel-body" id="disqus">
+		</div>
+		<div class="panel-footer">
 	</div>
 </div>
-
+<% if user_signed_in? %>
 <%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+<% end %>
+<%= link_to 'All Albums', albums_path %>
+</div>

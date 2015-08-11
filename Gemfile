@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
 # Use mysql2 as the database for Active Record
@@ -48,7 +47,7 @@ gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'valid_email'
 gem 'rufus-scheduler'
-gem 'carrierwave'
+gem 'carrierwave-aws'
 gem 'animate-rails'
 gem 'font-awesome-rails'
 gem 'bootswatch-rails'
@@ -59,4 +58,5 @@ gem 'rails_12factor', group: :production
 gem 'stellar-js-rails'
 gem 'wow-rails'
 gem 'share-counter'
-
+gem 'paypal-sdk-rest'
+gem 'cloudinary'

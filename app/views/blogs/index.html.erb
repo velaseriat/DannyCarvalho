@@ -50,7 +50,7 @@
 
 <div class="container">
   <div class="text-center">
-    <%= button_to 'Read All on Blogger!', 'http://domainofzeus.blogspot.com/', class: 'btn btn-primary', method: 'get' %>
+    <%= button_to 'Read on my Blogger!', 'http://domainofzeus.blogspot.com/', class: 'btn btn-primary', method: 'get' %>
   </div>
   <br>
   <% @blogs.each do |blog| %>
@@ -63,7 +63,7 @@
     </div>
     <div id=<%= blog.blogId %> class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body" id="blog-content">
-        <%= button_to 'Read', blog, :class=> 'btn btn-default', method: 'get' %>
+        <%= button_to 'Read this blog post', blog, :class=> 'btn btn-primary', method: 'get' %>
         <br>
         <br>
         <%= blog.content.html_safe %>
