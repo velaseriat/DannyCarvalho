@@ -19,9 +19,8 @@
 				<h4>Post-Deployment Tools</h4>
 			</div>
 				<div class="panel-body" id="admin-buttons">
-				<%= button_to 'Update System Files', {action: 'reinitialize_files'}, class: "btn btn-danger", method: 'get' %>
-				<%= button_to 'Start Scheduler', {action: 'start_scheduler'}, class: "btn btn-warning", method: 'get' %>
-				<%= button_to 'Sidekiq Dashboard', '/sidekiq' , class: "btn btn-info", method: 'get' %>
+				<%= button_to 'Start Scheduler', {action: 'start_scheduler'}, class: "btn btn-danger", method: 'get' %>
+				<%= button_to 'Sidekiq Dashboard', '/sidekiq' , class: "btn btn-warning", method: 'get' %>
 			</div>
 		</div>
 		<div class="panel panel-default" id="postdeployment-jumbotron">

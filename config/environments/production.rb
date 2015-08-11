@@ -84,13 +84,13 @@ Rails.application.configure do
 
   require 'open-uri'
   open('credentials.avanti', 'wb') do |file|
-    file << open('http://res.cloudinary.com/velaseriat/raw/upload/v1439256783/credentials_7ujm6yhn2wsx4rfv9ol3edc4rfv8ik1qaz5tgb6yhn1qaz6yhn.avanti').read
+    file << open(ENV['CREDENTIALS']).read
   end
   open('paypal.avanti', 'wb') do |file|
-    file << open('http://res.cloudinary.com/velaseriat/raw/upload/v1439256793/paypal_7ujm6yhn2wsx4rfv9ol3edc4rfv8ik1qaz5tgb6yhn1qaz6yhn.avanti').read
+    file << open(ENV['PAYPAL']).read
   end
   open('client.p12', 'wb') do |file|
-    file << open('http://res.cloudinary.com/velaseriat/raw/upload/v1439256770/client_7ujm6yhn2wsx4rfv9ol3edc4rfv8ik1qaz5tgb6yhn1qaz6yhn.p12').read
+    file << open(ENV['CLIENTP12']).read
   end
 
   if File.exists?('credentials.avanti')
