@@ -89,6 +89,7 @@ $(document).ready( function() {
         </div>
       </div>
       <div class="panel-group" id="eventAccordion" role="tablist" aria-multiselectable="true">
+        <% if !@event1.nil? %>
         <div class="panel panel-default" id="my-panel-heading">
           <div class="panel-heading" role="tab" id="eventHeadingOne">
             <h4 class="panel-title">
@@ -110,6 +111,8 @@ $(document).ready( function() {
             </div></div>
           </div>
         </div>
+        <% end %>
+        <% if !@event2.nil? %>
         <div class="panel panel-default" id="my-panel-heading">
           <div class="panel-heading" role="tab" id="eventHeadingTwo">
             <h4 class="panel-title">
@@ -131,6 +134,8 @@ $(document).ready( function() {
             </div></div>
           </div>
         </div>
+        <% end %>
+        <% if !@event3.nil? %>
         <div class="panel panel-default" id="my-panel-heading">
           <div class="panel-heading" role="tab" id="eventHeadingThree">
             <h4 class="panel-title">
@@ -152,6 +157,8 @@ $(document).ready( function() {
             </div></div>
           </div>
         </div>
+        <% end %>
+        
       </div>
     </div>
     <div class="col-md-4">

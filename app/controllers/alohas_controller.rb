@@ -17,16 +17,16 @@ class AlohasController < ApplicationController
     @event2 = threeEvents.second
     @event3 = threeEvents.third
 
-    @event1_image = !@event1.image_filepath.standard.nil? ? @event1.image_filepath.standard.to_s : 'default.jpg'
-    @event2_image = !@event2.image_filepath.standard.nil? ? @event2.image_filepath.standard.to_s : 'default.jpg'
-    @event3_image = !@event3.image_filepath.standard.nil? ? @event3.image_filepath.standard.to_s : 'default.jpg'
+    @event1_image = !@event1.image_filepath.standard.nil? ? @event1.image_filepath.standard.to_s : 'default.jpg' if !@event1.nil?
+    @event2_image = !@event2.image_filepath.standard.nil? ? @event2.image_filepath.standard.to_s : 'default.jpg' if !@event2.nil?
+    @event3_image = !@event3.image_filepath.standard.nil? ? @event3.image_filepath.standard.to_s : 'default.jpg' if !@event3.nil?
 
-    d1 = @event1.dateTime.to_s.match('\d{4}[-]\d{2}[-]\d{2}').to_s.split('-')
-    @date1 = d1[1] + "/" + d1[2] + "/" + d1[0]
-    d2 = @event2.dateTime.to_s.match('\d{4}[-]\d{2}[-]\d{2}').to_s.split('-')
-    @date2 = d2[1] + "/" + d2[2] + "/" + d2[0]
-    d3 = @event3.dateTime.to_s.match('\d{4}[-]\d{2}[-]\d{2}').to_s.split('-')
-    @date3 = d3[1] + "/" + d3[2] + "/" + d3[0]
+    d1 = @event1.dateTime.to_s.match('\d{4}[-]\d{2}[-]\d{2}').to_s.split('-') if !@event1.nil?
+    @date1 = d1[1] + "/" + d1[2] + "/" + d1[0] if !@event1.nil?
+    d2 = @event2.dateTime.to_s.match('\d{4}[-]\d{2}[-]\d{2}').to_s.split('-') if !@event2.nil?
+    @date2 = d2[1] + "/" + d2[2] + "/" + d2[0] if !@event2.nil?
+    d3 = @event3.dateTime.to_s.match('\d{4}[-]\d{2}[-]\d{2}').to_s.split('-') if !@event3.nil?
+    @date3 = d3[1] + "/" + d3[2] + "/" + d3[0] if !@event3.nil?
 
     @video1 = Video.first
     @video2 = Video.second
