@@ -171,8 +171,22 @@ $(document).ready( function() {
         </div>
       </div>
       <p class="lead">
-        We sold so much things that we no more.
+        Check out the goods!
       </p>
+      <div class="text-center">
+        <p class="lead">
+          Latest Album - <%= @album1.name %>
+        </p>
+        <%= image_tag @album1.image_filepath, class: 'img-responsive', id: 'storefront-image' %>
+        <%= link_to 'More info', @album1 %>
+        <hr>
+        <p class="lead">
+          Latest Merchandise - <%= @product1.name %>
+        </p>
+        <%= image_tag @product1.image_filepath, class: 'img-responsive', id: 'storefront-image' %>
+        <%= link_to 'More info', @product1 %>
+      </div>
+
     </div>
     <div class="col-md-4">
       <div class="row" id="header-row">

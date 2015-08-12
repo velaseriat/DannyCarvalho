@@ -34,9 +34,7 @@ class AlohasController < ApplicationController
 
     @album1 = Album.order(:release).first
 
-    @products = Product.order(:release)
-    @product1 = @products.first
-    @product2 = @products.second
+    @product1 = Product.order(:release).first
   end
 
   # GET /alohas/1
