@@ -177,53 +177,36 @@ $(document).ready( function() {
         <p class="lead">
           Latest Album - <%= @album1.name %>
         </p>
-        <%= image_tag @album1.image_filepath, class: 'img-responsive', id: 'storefront-image' %>
+        <%= image_tag @album1.image_filepath.to_s, class: 'img-responsive', id: 'storefront-image' %>
         <%= link_to 'More info', @album1 %>
         <hr>
         <p class="lead">
           Latest Merchandise - <%= @product1.name %>
         </p>
         <%= image_tag @product1.image_filepath, class: 'img-responsive', id: 'storefront-image' %>
-        <%= link_to 'More info', @product1 %>
+        <%= link_to 'More info', @product1.to_s %>
       </div>
 
     </div>
     <div class="col-md-4">
       <div class="row" id="header-row">
         <div class="col-md-8">
-          <h4>About This App</h4>
+          <h4>About Danny Carvalho</h4>
         </div>
       </div>
-      <p class="lead">
-        This section will be deleted before the real launch.
+      <p>
+        At 23 years old, Danny Carvalho represents a new generation of Hawaiian music.  A virtuosic slack key guitar player, Carvalho fuses flawless technique with dynamic performances and raw emotion, stirring the heart and soul. 
+
+
+Carvalho began his formal studies with Ozzie Kotani at age 10. Kotani, recognizing his raw talent, nurtured it by featuring Carvalho in his performances, jump-starting a wildly prolific musical journey. He would study under other teachers, including multi-Grammy-award winning Dennis Kamakahi and Neva Rego, and also independently study the music of many other Hawaiian legends. 
+
+
+In 2004, Carvalho was the first slack key player to be featured on the nationally syndicated program From The Top.  Two years later, he made his first of two appearances on Garrison Keilor’s A Prairie Home Companion and released his first album, Slack Key Journey - On My Way.  His second album, Somewhere,  was released in 2008, and nominated in the Na Hoku Hanohano Awards for Slack Key Album of the year.  Carvalho’s music was also featured in Alexander Payne’s Academy Award winning film, The Descendants.
+
+
+After years of maturing as a musician, he also found his voice as a formidable singer, producer, band-leader, and writer. He put these new skills to the test in 2013 with the release of his third album, Ke Au Hou. “Perpetuation of Hawaiian knowledge has been a constant in my career, and is more prominent now than ever with my study of culture, history, language and navigation,” says to Carvalho, who recently graduated from the University of Hawaii with a bachelor's degree in Hawaiian Studies.  His love of Hawaiian culture continues to inspire his music while keeping him connected to the community.  When asked what inspires his music, Carvalho says, “My music has always been and will always be about emotion, heart, and soul, above all else. No matter the style, genre, and influences I draw from, my music is about spreading the Hawaiian culture and soul through music.”
+
       </p>
-      <p>API Features (updates every 8 hours)</p>
-      <ul>
-        <li>Google Calendar - update gigs</li>
-        <li>YouTube Data API - update videos</li>
-        <li>Instagram API - update instagram photos</li>
-        <li>Blogger - update blogs</li>
-      </ul>
-      <p>Embedded Features</p>
-      <ul>
-        <li>Google Maps - gig location</li>
-        <li>YouTube</li>
-        <li>Instagram</li>
-        <li>Blogger - update blogs</li>
-        <li>Facebook</li>
-        <li>Soundcloud</li>
-        <li>Twitter - awesome embedded item</li>
-        <li>BandCamp - this guy too</li>
-      </ul>
-      <p>Notable Plugins</p>
-      <ul>
-        <li>Boostrap</li>
-        <li>Sidekiq - for mailing subscribers</li>
-        <li>Rufus Scheduler - for auto-updating database</li>
-        <li>Animate.css - lovely thing</li>
-        <li>Font Aweomse - well, cuz u r</li>
-        <li>MySQL - like a true friend</li>
-      </ul>
     </div>
   </div>
   <div class="row">
