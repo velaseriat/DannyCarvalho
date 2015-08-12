@@ -183,8 +183,8 @@ $(document).ready( function() {
         <p class="lead">
           Latest Merchandise - <%= @product1.name %>
         </p>
-        <%= image_tag @product1.image_filepath, class: 'img-responsive', id: 'storefront-image' %>
-        <%= link_to 'More info', @product1.to_s %>
+        <%= image_tag @product1.image_filepath.to_s, class: 'img-responsive', id: 'storefront-image' %>
+        <%= link_to 'More info', @product1 %>
       </div>
 
     </div>
