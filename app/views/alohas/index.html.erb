@@ -167,23 +167,20 @@ $(document).ready( function() {
           <h4 class="pull-left">Store</h4>
         </div>
         <div class="col-md-4" id="header-link">
-          <%= link_to 'Music and More', :root, class: "pull-right", method: 'get' %>
+          <%= link_to 'Music and More', products_path, class: "pull-right", method: 'get' %>
         </div>
       </div>
-      <p class="lead">
-        Check out the goods!
-      </p>
       <div class="text-center">
         <p class="lead">
           Latest Album - <%= @album1.name %>
         </p>
-        <%= image_tag @album1.image_filepath.to_s, class: 'img-responsive', id: 'storefront-image' %>
+        <%= image_tag @album1.image_filepath.thumbnail.to_s, class: 'img-responsive', id: 'storefront-image' %>
         <%= link_to 'More info', @album1 %>
         <hr>
         <p class="lead">
           Latest Merchandise - <%= @product1.name %>
         </p>
-        <%= image_tag @product1.image_filepath.to_s, class: 'img-responsive', id: 'storefront-image' %>
+        <%= image_tag @product1.image_filepath.thumbnail.to_s, class: 'img-responsive', id: 'storefront-image' %>
         <%= link_to 'More info', @product1 %>
       </div>
 
