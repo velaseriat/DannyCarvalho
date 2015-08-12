@@ -170,18 +170,37 @@ $(document).ready( function() {
           <%= link_to 'Music and More', products_path, class: "pull-right", method: 'get' %>
         </div>
       </div>
-      <div class="text-center">
-        <p class="lead">
-          Latest Album - <%= @album1.name %>
-        </p>
-        <%= image_tag @album1.image_filepath.thumbnail.to_s, class: 'img-responsive', id: 'storefront-image' %>
-        <%= link_to 'More info', @album1 %>
-        <hr>
-        <p class="lead">
-          Latest Merchandise - <%= @product1.name %>
-        </p>
-        <%= image_tag @product1.image_filepath.thumbnail.to_s, class: 'img-responsive', id: 'storefront-image' %>
-        <%= link_to 'More info', @product1 %>
+      <p class="lead">Latest Products</p>
+      <div class="media">
+        <div class="media-left media-top">
+          <%= link_to @album1 do %>
+            <%= image_tag @album1.image_filepath.thumbnail.to_s, class:"media-object", id: 'storefront-image' %>
+          <% end %>
+          <br>
+          <p class="lead" id="storefront-price"><%= @album1.price %></p>
+          <%= link_to 'More info', @product1 %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= @album1.name %></h4>
+            <div id="storefront-text"><%= @album1.description %></div>
+            <br>
+        </div>
+      </div>
+      <hr>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading"><%= @product1.name %></h4>
+            <div id="storefront-text"><%= @product1.data %></div>
+            <br>
+        </div>
+        <div class="media-right media-top">
+          <%= link_to @product1 do %>
+            <%= image_tag @product1.image_filepath.thumbnail.to_s, class:"media-object", id: 'storefront-image' %>
+          <% end %>
+          <br>
+          <p class="lead" id="storefront-price"><%= @product1.price %></p>
+          <%= link_to 'More info', @product1 %>
+        </div>
       </div>
 
     </div>

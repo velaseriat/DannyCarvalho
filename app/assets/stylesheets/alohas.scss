@@ -97,7 +97,14 @@
 }
 
 #storefront-image{
-  max-width: 50%;
-  max-height: 30%;
-  margin: 0 auto;
+  max-width: 120px;
+  border-radius: 5px;
+}
+
+#storefront-text{
+  max-height: 11em;
+  text-overflow: clip;
+}
+#storefront-price{
+  margin-bottom: 0px;
 }
