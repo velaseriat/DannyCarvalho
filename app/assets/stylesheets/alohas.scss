@@ -102,9 +102,16 @@
 }
 
 #storefront-text{
-  max-height: 11em;
-  text-overflow: clip;
+  max-height: 14em;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
 }
 #storefront-price{
   margin-bottom: 0px;
 }
+
+
+

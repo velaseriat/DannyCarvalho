@@ -82,10 +82,13 @@ $(document).ready( function() {
     <div class="col-md-4">
       <div class="row" id="header-row">
         <div class="col-md-8">
-          <h4 class="pull-left">The Next of Gigs</h4>
+          <h4 class="pull-left">Upcoming Gigs</h4>
         </div>
         <div class="col-md-4" id="header-link">
-          <%= link_to 'All Gigs', events_path, class: "pull-right", method: 'get' %>
+          <%= link_to events_path, class: "pull-right" do %>
+            <i class="fa fa-calendar"></i>
+            Gig Schedule
+          <% end %>
         </div>
       </div>
       <div class="panel-group" id="eventAccordion" role="tablist" aria-multiselectable="true">
@@ -164,13 +167,15 @@ $(document).ready( function() {
     <div class="col-md-4">
       <div class="row" id="header-row">
         <div class="col-md-8">
-          <h4 class="pull-left">Store</h4>
+          <h4 class="pull-left">New Store Arrivals</h4>
         </div>
         <div class="col-md-4" id="header-link">
-          <%= link_to 'Music and More', products_path, class: "pull-right", method: 'get' %>
+          <%= link_to products_path, class: "pull-right" do %>
+            <i class="fa fa-music"></i>
+            Music and More
+          <% end %>
         </div>
       </div>
-      <p class="lead">Latest Products</p>
       <div class="media">
         <div class="media-left media-top">
           <%= link_to @album1 do %>
@@ -181,7 +186,7 @@ $(document).ready( function() {
           <%= link_to 'More info', @product1 %>
         </div>
         <div class="media-body">
-          <h4 class="media-heading"><%= @album1.name %></h4>
+          <p class="lead media-heading"><%= @album1.name %></p>
             <div id="storefront-text"><%= @album1.description %></div>
             <br>
         </div>
@@ -189,7 +194,7 @@ $(document).ready( function() {
       <hr>
       <div class="media">
         <div class="media-body">
-          <h4 class="media-heading"><%= @product1.name %></h4>
+          <p class="lead media-heading"><%= @product1.name %></p>
             <div id="storefront-text"><%= @product1.data %></div>
             <br>
         </div>
@@ -202,27 +207,67 @@ $(document).ready( function() {
           <%= link_to 'More info', @product1 %>
         </div>
       </div>
+      <br>
+      <h4 class="text-center">
+        <%= link_to products_path do %>
+          <i class="fa fa-music"></i>
+          Enter the store!
+        <% end %>
+      </h4>
 
     </div>
     <div class="col-md-4">
       <div class="row" id="header-row">
         <div class="col-md-8">
-          <h4>About Danny Carvalho</h4>
+          <h4>About Me</h4>
         </div>
       </div>
-      <p>
-        At 23 years old, Danny Carvalho represents a new generation of Hawaiian music.  A virtuosic slack key guitar player, Carvalho fuses flawless technique with dynamic performances and raw emotion, stirring the heart and soul. 
+      <div class="media">
+        <div class="media-left media-top">
+          <%= link_to about_path do %>
+            <%= image_tag 'http://res.cloudinary.com/velaseriat/image/upload/v1439459183/shapeimage_3_avnjac.png', class:"media-object", id: 'storefront-image' %>
+          <% end %>
+        </div>
+        <div class="media-body">
+          <p class="lead media-heading">Where I began my journey...</p>
+            <div id="storefront-text">
+              <font size="3">
+                At 23 years old, Danny Carvalho represents a new generation of Hawaiian music.  A virtuosic slack key guitar player, Carvalho fuses flawless technique with dynamic performances and raw emotion, stirring the heart and soul.
+              </font>
+              <br><br>
+            </div>
+            <h5 class="text-center">
+              <%= link_to about_path do %>
+                <i class="fa fa-book"></i>
+                Read this
+              <% end %>
+            </h5>
+            <br>
+        </div>
+      </div>
 
+      <br>
 
-Carvalho began his formal studies with Ozzie Kotani at age 10. Kotani, recognizing his raw talent, nurtured it by featuring Carvalho in his performances, jump-starting a wildly prolific musical journey. He would study under other teachers, including multi-Grammy-award winning Dennis Kamakahi and Neva Rego, and also independently study the music of many other Hawaiian legends. 
+      <div class="row" id="header-row">
+        <div class="col-md-8">
+          <h4>Latest Blogs</h4>
+        </div>
+      </div>
+      <% @blogs.each do |blog| %>
+        <h5>
+          <%= blog.published.strftime("%m/%d") %>
+          <%= link_to blog do %>
+            <small><%= ' ' + blog.title %></small>
+          <% end %>
+        </h5>
+      <% end %>
 
-
-In 2004, Carvalho was the first slack key player to be featured on the nationally syndicated program From The Top.  Two years later, he made his first of two appearances on Garrison Keilor’s A Prairie Home Companion and released his first album, Slack Key Journey - On My Way.  His second album, Somewhere,  was released in 2008, and nominated in the Na Hoku Hanohano Awards for Slack Key Album of the year.  Carvalho’s music was also featured in Alexander Payne’s Academy Award winning film, The Descendants.
-
-
-After years of maturing as a musician, he also found his voice as a formidable singer, producer, band-leader, and writer. He put these new skills to the test in 2013 with the release of his third album, Ke Au Hou. “Perpetuation of Hawaiian knowledge has been a constant in my career, and is more prominent now than ever with my study of culture, history, language and navigation,” says to Carvalho, who recently graduated from the University of Hawaii with a bachelor's degree in Hawaiian Studies.  His love of Hawaiian culture continues to inspire his music while keeping him connected to the community.  When asked what inspires his music, Carvalho says, “My music has always been and will always be about emotion, heart, and soul, above all else. No matter the style, genre, and influences I draw from, my music is about spreading the Hawaiian culture and soul through music.”
-
-      </p>
+      <h5 class="text-center">
+        <%= link_to about_path do %>
+        <i class="fa fa-pencil"></i>
+        Read my blogs
+        <% end %>
+      </h5>
     </div>
   </div>
   <div class="row">
@@ -253,7 +298,10 @@ After years of maturing as a musician, he also found his voice as a formidable s
           <h4 class="pull-left">YouTubez</h4>
         </div>
         <div class="col-md-6" id="header-link">
-          <%= link_to 'All Videos', videos_path, class: "pull-right", method: 'get' %>
+          <%= link_to videos_path, class: "pull-right" do %>
+            <i class="fa fa-youtube-play"></i>
+            All YouTube Vids
+          <% end %>
         </div>
       </div>
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

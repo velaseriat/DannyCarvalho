@@ -118,6 +118,71 @@ class UsersController < ApplicationController
     end
   end
 
+  # def update_news
+  #   if !user_signed_in?
+  #     redirect_to :root
+  #   else
+  #     updated = false
+  #     starttime = DateTime.now.iso8601(2)
+
+
+  #     puts "Updating at #{starttime}"
+
+  #     client = Google::APIClient.new(:application_name => Rails.application.config.applicationName,
+  #       :application_version => '0.1.0')
+  #     key = Google::APIClient::KeyUtils.load_from_pkcs12(Rails.application.config.googleP12, Rails.application.config.googlePassphrase)
+
+  #     client.authorization = Signet::OAuth2::Client.new(
+  #       :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
+  #       :audience => 'https://accounts.google.com/o/oauth2/token',
+  #       :scope => 'https://www.googleapis.com/auth/cse',
+  #       :issuer => Rails.application.config.googleIssuer,
+  #       :signing_key => key)
+  #     client.authorization.fetch_access_token!
+
+  #     cse_api = client.discovered_api('customsearch', 'v1')
+
+  #     results = client.execute!(
+  #       :api_method => cse_api.cse.list,
+  #       :parameters => {
+  #         :maxResults => 30,
+  #         :q => "Danny Carvalho",
+  #         :cx => "016987149122176185005:p6cpu5owsug",
+  #         :dateRestrict => 'm6'
+  #         })
+
+  #     if !results.nil?
+  #       if !results.data.nil?
+  #         if !results.data.items.nil?
+  #           results.data.items.each do |item|
+  #             title = item.title
+  #             link = item.link
+  #             snippet = item.snippet
+
+  #             #check if event already exists on database
+  #             e = Article.where(title: title).first_or_initialize
+  #             e.title = title
+  #             e.link = link
+  #             e.snippet = snippet
+
+  #             if e.image_filepath.file.nil?
+  #               e.remote_image_filepath_url = image_filepath
+  #             end
+
+  #             if e.changed?
+  #               e.save
+  #             end
+  #           end
+  #         end
+  #       end
+  #     end
+
+  #     respond_to do |format|
+  #       format.html { redirect_to current_user }
+  #     end
+  #   end
+  # end
+
   def update_events
     if !user_signed_in?
       redirect_to :root

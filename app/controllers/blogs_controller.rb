@@ -4,7 +4,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all.limit(15)
+    @blogs = Blog.order(published: :desc).limit(15)
   end
 
   # GET /blogs/1

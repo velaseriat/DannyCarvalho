@@ -35,6 +35,8 @@ class AlohasController < ApplicationController
     @album1 = Album.order(:release).first
 
     @product1 = Product.order(:release).first
+
+    @blogs = Blog.order(published: :desc).limit(5)
   end
 
   # GET /alohas/1
