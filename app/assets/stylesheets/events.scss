@@ -68,3 +68,9 @@ div.row{
 #event-body{
 	padding: 0px;
 }
+
+@media all and (max-width: 768px ){
+            #google-calendar {
+                display:none !important;
+            }
+}

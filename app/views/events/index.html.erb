@@ -1,4 +1,18 @@
 
+<script>
+
+$(document).ready(function() {
+    $("#calendar").fullCalendar({
+        googleCalendarApiKey: Rails.application.config.googleMapKey,
+        events: {
+            googleCalendarId: Rails.application.config.googleCalendarID
+        }
+    });
+    $('#calendar').fullCalendar();
+});
+
+</script>
+
 <div class="spaces"></div>
 
 <h1 class="text-center">Check 'Em Out!<small> Don't forget to tip, ah?</small></h1>
@@ -69,4 +83,11 @@
       <% end %>
     </div>
   <% end %>
+</div>
+<div class="container">
+  <div id="google-calendar">
+    <h1 class="text-center">The Google Calendar Embed!<small> Putting it in perspective</small></h1>
+    <iframe src="https://www.google.com/calendar/embed?src=nmlepqievbbv35tep9lihgd608%40group.calendar.google.com&ctz=Pacific/Honolulu" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no" background-color="black"></iframe>
+  </div>
+  <br>
 </div>

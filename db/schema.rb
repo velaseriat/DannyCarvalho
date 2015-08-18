@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810063912) do
+ActiveRecord::Schema.define(version: 20150818002020) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name",           limit: 255
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150810063912) do
     t.string   "location",       limit: 255
     t.datetime "dateTime"
     t.string   "event_id",       limit: 255
+    t.datetime "endDateTime"
   end
 
   create_table "igrams", force: :cascade do |t|

@@ -207,23 +207,27 @@ class UsersController < ApplicationController
 
       calendar_api = client.discovered_api('calendar', 'v3')
 
+      puts "Using THIS: #{Rails.application.config.googleCalendarID}"
+
       results = client.execute!(
         :api_method => calendar_api.events.list,
         :parameters => {
+          :maxResults => 30,
           :calendarId => Rails.application.config.googleCalendarID,
           :orderBy => 'startTime',
-          :maxResults => 30,
           :singleEvents => true,
           :timeMin => starttime
           })
       if !results.nil?
         if !results.data.nil?
-          if !results.data.summary.nil?
+          if !results.data.items.nil?
             results.data.items.each do |item|
+              puts item
               summary = item.summary
-              dateTime = item.start.dateTime
+              dateTime =  item.start.date.nil? ? item.start.dateTime : item.start.date
+              endDateTime =  item.end.date.nil? ? item.end.dateTime : item.end.date
               location = item.location
-              description = item.description
+              description = item.description.nil? ? "" : item.description
 
               if description.match('\[\[')
                 image_filepath = description.match('\[\[\S+\]\]').to_s
@@ -239,8 +243,10 @@ class UsersController < ApplicationController
               e = Event.where(event_id: id).first_or_initialize
               e.summary = summary
               e.dateTime = dateTime
+              e.endDateTime = endDateTime
               e.location = location
               e.description = description
+              e.event_id = id
 
               if e.image_filepath.file.nil?
                 e.remote_image_filepath_url = image_filepath
