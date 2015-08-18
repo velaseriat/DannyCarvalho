@@ -91,6 +91,7 @@ def update_events
           e.dateTime = dateTime
           e.location = location
           e.description = description
+          e.event_id = id
 
           if e.image_filepath.file.nil?
             e.remote_image_filepath_url = image_filepath

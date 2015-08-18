@@ -86,9 +86,6 @@ Rails.application.configure do
   open('credentials.avanti', 'wb') do |file|
     file << open(ENV['CREDENTIALS']).read
   end
-  open('paypal.avanti', 'wb') do |file|
-    file << open(ENV['PAYPAL']).read
-  end
   open('client.p12', 'wb') do |file|
     file << open(ENV['CLIENTP12']).read
   end
