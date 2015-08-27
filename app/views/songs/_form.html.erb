@@ -27,6 +27,10 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+  <div class="field">
+    <%= f.label :album_id %><br>
+    <%= f.select :album_id, options_from_collection_for_select(@albums, "id", "name") %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

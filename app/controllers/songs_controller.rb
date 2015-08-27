@@ -17,6 +17,7 @@ class SongsController < ApplicationController
     if !user_signed_in?
       redirect_to :root
     else
+      @albums = Album.all
       @song = Song.new
     end
   end
@@ -25,8 +26,10 @@ class SongsController < ApplicationController
   def edit
     if !user_signed_in?
       redirect_to :root
-      end
+    else
+      @albums = Album.all
     end
+  end
 
   # POST /songs
   # POST /songs.json
@@ -88,6 +91,6 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:title, :duration, :filepath, :description)
+      params.require(:song).permit(:title, :duration, :filepath, :description, :album_id)
     end
   end
