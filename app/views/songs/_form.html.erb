@@ -20,8 +20,8 @@
     <%= f.text_field :duration %>
   </div>
   <div class="field">
-    <%= f.label :image_filepath %><br>
-    <%= f.file_field :image_filepath %>
+    <%= f.label :filepath %><br>
+    <%= f.file_field :filepath %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
@@ -30,6 +30,10 @@
   <div class="field">
     <%= f.label :album_id %><br>
     <%= f.select :album_id, options_from_collection_for_select(@albums, "id", "name") %>
+  </div>
+  <div class="field">
+    <%= f.label :track_num %><br>
+    <%= f.number_field :track_num %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,39 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="spaces"></div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @song.title %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Duration:</strong>
-  <%= @song.duration %>
-</p>
+  <h1 class="text-center"><%= @song.title%></h1>
 
-<p>
-  <strong>Filepath:</strong>
-  <%= @song.filepath %>
-</p>
+  <p>
+    <strong>Duration:</strong>
+    <%= @song.duration %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @song.description %>
-</p>
+  <p>
+    <strong>Filepath:</strong>
+    <%= image_tag @song.filepath.to_s %>
+  </p>
 
-<p>
-  <strong>Album:</strong>
-  <%= @song.album_id %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @song.description %>
+  </p>
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h4 id="large-title">Disqus</h4>
-	</div>
-	<div class="panel-body" id="disqus">
-	</div>
-	<div class="panel-footer">
-	</div>
+  <p>
+    <strong>Album:</strong>
+    <%= @song.album_id %>
+  </p>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 id="large-title">Disqus</h4>
+    </div>
+    <div class="panel-body" id="disqus">
+    </div>
+    <div class="panel-footer">
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_song_path(@song) %> |
+  <% end %>
+  <%= link_to 'Back To Album', @song.album %>
+
 </div>
-
-<%= link_to 'Edit', edit_song_path(@song) %> |
-<%= link_to 'Back', songs_path %>
