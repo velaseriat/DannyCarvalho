@@ -35,6 +35,9 @@
                   <li><%= link_to 'Music', albums_path %></li>
                   <li><%= link_to 'Photos', photos_path %></li>
                   <li><%= link_to 'Instagram', igrams_path %></li>
+                  <% if user_signed_in? %>
+                    <li><%= link_to 'All Songs', songs_path %></li>
+                  <% end %>
                 </ul>
               </li>
               <li><%= link_to 'Blog', blogs_path %></li>

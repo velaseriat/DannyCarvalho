@@ -18,8 +18,8 @@
             	<input type="image" src="https://res.cloudinary.com/velaseriat/image/upload/v1439329958/addtocart_t0balc.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
             	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
           	</form>
-          	<h4 class="text-center">Track List</h4>
           	<br>
+          	<h4 class="text-center">Track List</h4>
           	<% @songs.each do |song| %>
           		<%= link_to (song.track_num.to_s + '. ' + song.title), song %>
           		<br>

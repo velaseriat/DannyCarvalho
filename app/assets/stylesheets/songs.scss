@@ -1,3 +1,12 @@
 // Place all the styles related to the songs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#song-photo{
+  margin: 0 auto;
+  max-height: 500px;
+}
+
+#song-info{
+	max-width: 800px;
+	margin: 0 auto;
+}

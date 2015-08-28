@@ -1,28 +1,21 @@
 <div class="spaces"></div>
 
 <div class="container">
-
-  <h1 class="text-center"><%= @song.title%></h1>
-
-  <p>
-    <strong>Duration:</strong>
-    <%= @song.duration %>
-  </p>
-
-  <p>
-    <strong>Filepath:</strong>
-    <%= image_tag @song.filepath.to_s %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @song.description %>
-  </p>
-
-  <p>
-    <strong>Album:</strong>
-    <%= @song.album_id %>
-  </p>
+<div id="song-info">
+<h1 class="text-center"><%= @song.title%></h1>
+<br>
+<%= image_tag @song.filepath.to_s, class: 'img-responsive img-rounded', id: 'song-photo' %>
+<br>
+<p class="lead text-center">About This Song</p>
+<%= @song.description %>
+<br>
+<br>
+<p class="lead">
+  Album: <%= @song.album.name %>
+  <br>
+  Duration: <%= @song.duration %>
+</p>
+</div>
 
   <div class="panel panel-default">
     <div class="panel-heading">
