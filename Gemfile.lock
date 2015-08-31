@@ -130,6 +130,9 @@ GEM
     hitimes (1.2.2-x86-mingw32)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    httparty (0.13.5)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     instagram (1.1.5)
       faraday (>= 0.7, < 0.10)
@@ -155,11 +158,15 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    matenia-tumblr-api (0.1.6)
+      activesupport
+      httparty
     memoist (0.12.0)
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.0)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.18-x86-mingw32)
     netrc (0.10.3)
@@ -301,6 +308,7 @@ DEPENDENCIES
   instagram
   jbuilder (~> 2.0)
   jquery-rails
+  matenia-tumblr-api
   mysql2
   puma
   rails (= 4.2.2)

@@ -290,9 +290,8 @@ class UsersController < ApplicationController
         :api_method => yt.search.list,
         :parameters => {
           :part => 'snippet',
-          :q => 'Two Steps From Hell',
           :maxResults => 30,
-          :channelId => 'UC3swwxiALG5c0Tvom83tPGg',
+          :channelId => 'UCU4UPkCWJk98Wi6Dr9AWqMA',
           :type => 'youtube#video',
           :order => 'date'
         }
