@@ -104,6 +104,14 @@ def update_events
       end
     end
   end
+
+  @events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
+  @events.each do |eve|
+    # if it hasn't updated, then it doesn't exist in Google calendar. Delete it.
+    if (((DateTime.now - eve.update_at)*24).to_i > 2)
+      eve.destroy
+    end
+  end
 end
 
 

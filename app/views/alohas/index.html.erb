@@ -6,10 +6,42 @@ $(document).ready( function() {
 });
 
 </script>
-
-<div id="header-background" data-stellar-ratio="0.5">
+<div id="header-background" data-stellar-ratio="0.4">
   <%= image_tag 'background.jpg', :id=> "header-background-image" %>
 </div>
+
+<div class="embed-responsive embed-responsive-16by9" id="lava-rock">
+  <video id="header-video" class="embed-responsive-item" autoplay="autoplay" loop="loop" autobuffer="autobuffer" muted="muted" poster="http://il7.picdn.net/shutterstock/videos/4648820/thumb/1.jpg">
+    <source type="video/mp4" src="http://ak5.picdn.net/shutterstock/videos/4648820/preview/stock-footage-fire-knife-dancer-performs-at-sunset.mp4">
+    <source type="video/webm" src="http://ak5.picdn.net/shutterstock/videos/4648820/preview/stock-footage-fire-knife-dancer-performs-at-sunset.webm">
+    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg">
+    <object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
+      <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
+      <param name="allowFullScreen" value="true">
+      <param name="wmode" value="transparent">
+      <param name="flashVars" value="config={'playlist':['http%3A%2F%2Fsandbox.thewikies.com%2Fvfe-generator%2Fimages%2Fbig-buck-bunny_poster.jpg',{'url':'http%3A%2F%2Fclips.vorwaerts-gmbh.de%2Fbig_buck_bunny.mp4','autoPlay':false}]}">
+      <img alt="Big Buck Bunny" src="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360" title="No video playback capabilities, please download the video below">
+    </object>
+  </video>
+  <div class="spaces"></div>
+  <div class="spaces"></div>
+  <div class="container-fluid">
+    <div class="row" id="header-jumbotron">
+      <div class="col-md-5 col-md-offset-7" id="header-jumbotron-background">
+        <h1 class="text-center">Hawaiian<span id="typist-section"> Music.</span></h1>
+        <br>
+      <p class="lead">
+        E Komo Mai! Welcome to my new website. Here you may find information about me, my CDs, upcoming shows, and other exciting news. Stay posted, as we are currently working on adding more new and exciting features to this site to improve the user experience. Enjoy!
+        <br><br>
+        -Danny
+      </p>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+</div>
+
 
 <div id="myCarousel" class="carousel slide">
   <!-- Indicators -->
@@ -52,30 +84,6 @@ $(document).ready( function() {
     <span class="sr-only">Next</span>
   </a>
 </div>
-
-<div class="container" id="header-jumbotron">
-  <br>
-  <br>
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="text-center wow slideInLeft">E Komo Mai!</h1>
-      <br>
-      <div class="text-center wow slideInLeft"><%= image_tag 'shapeimage_3.png', class: 'img-responsive img-rounded', id: 'danny-photo' %></div>
-      <br><br>
-      <p class="lead wow slideInLeft">
-        Aloha! Welcome to my new website. Here you may find information about me, my CDs, upcoming shows, and other exciting news. Stay posted, as we are currently working on adding more new and exciting features to this site to improve the user experience. Enjoy!
-        <br><br>
-        -Danny
-      </p>
-    </div>
-  </div>
-  <br>
-  <br>
-</div>
-
-
-
-
 
 <div class="container-fluid">
   <div class="row">

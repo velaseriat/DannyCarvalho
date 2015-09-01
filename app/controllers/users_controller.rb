@@ -260,6 +260,11 @@ class UsersController < ApplicationController
         end
       end
 
+      @events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
+      @events.each do |eve|
+        if (((DateTime.now - eve.update_at)*24).to_i > 2)
+      end
+
       respond_to do |format|
         format.html { redirect_to current_user }
       end

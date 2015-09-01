@@ -64,9 +64,13 @@
 
 #header-jumbotron{
   text-color: white;
-  .lead, h1{
-    color: #DDDDDD;
-    text-shadow: 2px 2px 2px  black;
+  padding:30px;
+  p, h1{
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px  black;
+  }
+  #header-jumbotron-background{
+    background-color:rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -82,7 +86,7 @@
 }
 
  @media all and (max-width: 768px ){
-            #header-background, #header-background-image{
+            #header-background, #header-background-image, #lava-rock{
               display:none !important;
             }
 }
@@ -112,6 +116,8 @@
 #storefront-price{
   margin-bottom: 0px;
 }
-
+#video-header{
+  
+}
 
 
