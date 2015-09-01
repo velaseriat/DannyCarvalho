@@ -263,6 +263,8 @@ class UsersController < ApplicationController
       @events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
       @events.each do |eve|
         if (((DateTime.now - eve.update_at)*24).to_i > 2)
+          eve.destroy
+        end
       end
 
       respond_to do |format|
