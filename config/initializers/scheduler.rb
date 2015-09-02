@@ -3,11 +3,13 @@
 
 require 'rufus-scheduler'
 require 'google/api_client'
+require 'instagram'
 # Let's use the rufus-scheduler singleton
 #
 s = Rufus::Scheduler.singleton
 #@event = Event.first
 def update_instagram
+  
   Instagram.configure do |config|
     config.client_id = Rails.application.config.instagramClientID
     config.client_secret = Rails.application.config.instagramClientSecret
@@ -171,7 +173,7 @@ def update_youtube
   if !results.nil?
     if !results.data.nil?
       if !results.data.items[0].nil?
-        if results.data.items.size == results2.data.items.size
+
           update = true
           counter = 0
           results.data.items.each do |item|
@@ -180,7 +182,11 @@ def update_youtube
               v = Video.where(url_path: item.id.videoId).first_or_initialize
 
               v.title = item.snippet.title
-              v.description = results2.data.items[counter].snippet.description
+              results2.data.items.each do |r2|
+                if item.id.videoId == r2.id
+                  v.description = r2.snippet.description
+                end
+              end
               v.url_path = item.id.videoId
               v.thumbnail_url = item.snippet.thumbnails.high.url
               if v.changed?
@@ -188,7 +194,7 @@ def update_youtube
               end
 
               counter = counter + 1
-            end
+
           end
         end
       end
@@ -278,6 +284,55 @@ def update_about
   end
 end
 
+
+
+
+def update_social
+  require 'soundcloud'
+  require 'tumblr'
+  require 'twitter'
+  #soundcloud
+  sc_client           = Soundcloud.new(client_id: Rails.application.config.soundcloudClientID)
+  sc_track            = sc_client.get('/tracks', limit: 1,  user_id: 44982439).first
+  soundcloud_id       = sc_track.id
+
+  #instgram
+  Instagram.configure do |config|
+    config.client_id      = Rails.application.config.instagramClientID
+    config.client_secret  = Rails.application.config.instagramClientSecret
+  end
+  ig_client           = Instagram.client(access_token: Rails.application.config.instagramAccessToken)
+  ig_results          = ig_client.user_recent_media
+  instagram_id        = ig_results.first.link
+
+  #twitter
+  tw_client           = Twitter::REST::Client.new do |config|
+    config.consumer_key        = Rails.application.config.twitterConsumerKey
+    config.consumer_secret     = Rails.application.config.twitterConsumerSecret
+    config.access_token        = Rails.application.config.twitterAccessToken
+    config.access_token_secret = Rails.application.config.twitterAccessTokenSecret
+  end
+  tw_tweet            = tw_client.user_timeline.first
+  twitter_id          = tw_tweet.id
+
+  #tumblr
+  tb_user             = Tumblr::User.new('velaseriat@outlook.com', Rails.application.config.tumblrPassword)
+  Tumblr.blog         = "just--space"
+  tb_posts            = Tumblr::Post.all
+  tumblr_id           = tb_posts.first['id']
+
+
+  @aloha = Aloha.first
+  @aloha.soundcloud_id  = soundcloud_id
+  @aloha.instagram_id   = instagram_id
+  @aloha.youtube_id     = Video.first
+  @aloha.twitter_id     = twitter_id
+  @aloha.tumblr_id      = tumblr_id
+
+  @aloha.save
+end
+
+
 s.every '6h' do
   if ENV['START_SCHEDULER'] = 'start'
     update_events
@@ -286,5 +341,12 @@ s.every '6h' do
     update_youtube
     update_instagram
     puts "Updated at at: #{Time.now}"
+  end
+end
+
+s.every '1h' do
+  if ENV['START_SCHEDULER'] = 'start'
+    update_social
+    puts "Updated Social at at: #{Time.now}"
   end
 end

@@ -11,23 +11,14 @@ $(document).ready( function() {
 </div>
 
 <div class="embed-responsive embed-responsive-16by9" id="lava-rock">
-  <video id="header-video" class="embed-responsive-item" autoplay="autoplay" loop="loop" autobuffer="autobuffer" muted="muted" poster="http://il7.picdn.net/shutterstock/videos/4648820/thumb/1.jpg">
-    <source type="video/mp4" src="http://ak5.picdn.net/shutterstock/videos/4648820/preview/stock-footage-fire-knife-dancer-performs-at-sunset.mp4">
-    <source type="video/webm" src="http://ak5.picdn.net/shutterstock/videos/4648820/preview/stock-footage-fire-knife-dancer-performs-at-sunset.webm">
-    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg">
-    <object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
-      <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
-      <param name="allowFullScreen" value="true">
-      <param name="wmode" value="transparent">
-      <param name="flashVars" value="config={'playlist':['http%3A%2F%2Fsandbox.thewikies.com%2Fvfe-generator%2Fimages%2Fbig-buck-bunny_poster.jpg',{'url':'http%3A%2F%2Fclips.vorwaerts-gmbh.de%2Fbig_buck_bunny.mp4','autoPlay':false}]}">
-      <img alt="Big Buck Bunny" src="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360" title="No video playback capabilities, please download the video below">
-    </object>
-  </video>
+  <div id="header-video" class="embed-responsive-item">
+    
+  </div>
   <div class="spaces"></div>
   <div class="spaces"></div>
   <div class="container-fluid">
     <div class="row" id="header-jumbotron">
-      <div class="col-md-5 col-md-offset-7" id="header-jumbotron-background">
+      <div class="col-lg-5 col-lg-offset-7" id="header-jumbotron-background">
         <h1 class="text-center"><span id="typist-section">Hawaiian</span>Music.</h1>
         <br>
       <p class="lead">
@@ -383,12 +374,10 @@ $(document).ready( function() {
     </div>
   </div>
   <br>
-</div>
-<div class="space"></div>
 
-<div class="container-fluid jumbotron footer" id="jumbotron-footer">
-  <br>
-  <div class="row">
+  <div class="space"></div>
+
+  <div class="row" id="aloha-footer">
     <div class="col-md-4 text-center">
       <h4>Contact Danny<small> Like, Seriously!</small></h4>
       Email: <%= mail_to 'velaseriat@outlook.com' %>
@@ -419,5 +408,8 @@ $(document).ready( function() {
       <br>
     </div>
   </div>
+
 </div>
+
+
 

@@ -16,4 +16,6 @@
 //= require bootstrap
 //= require jquery.stellar.min
 //= require wow
+//= require masonry/jquery.masonry
+//= require isotope/jquery.isotope
 //= require_tree .

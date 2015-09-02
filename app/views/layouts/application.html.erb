@@ -40,7 +40,8 @@
                   <% end %>
                 </ul>
               </li>
-              <li><%= link_to 'Blog', blogs_path %></li>
+              <li><%= link_to 'Blog', '#' %></li>
+              <li><%= link_to '#SOCIAL', social_path %></li>
               <li><%= link_to 'Store', products_path %></li>
               <li><%= link_to 'About Me', about_path %></li>
               <% if user_signed_in? %>
@@ -96,7 +97,7 @@
           <li><%= link_to 'videos', videos_path %></li>
           <li><%= link_to 'photos', photos_path %> </li>
           <li><%= link_to 'instgram', igrams_path %> </li>
-          <li><%= link_to 'blog', blogs_path %> </li>
+          <li><%= link_to 'blog', '#' %> </li>
         </ul>
       </div>
     </div>

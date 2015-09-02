@@ -3,15 +3,83 @@ class UsersController < ApplicationController
   require 'google/api_client'
   require 'open-uri'
   require 'instagram'
-  require 'rufus-scheduler'
-  require 'share-counter'
 
-  def console
+  def update_social
     if !user_signed_in?
       redirect_to :root
     else
+      require 'soundcloud'
+      require 'tumblr'
+      require 'twitter'
+      #soundcloud
+      sc_client           = Soundcloud.new(client_id: Rails.application.config.soundcloudClientID)
+      sc_track            = sc_client.get('/tracks', limit: 1,  user_id: 44982439).first
+      soundcloud_id       = sc_track.id
+
+      #instgram
+      Instagram.configure do |config|
+        config.client_id      = Rails.application.config.instagramClientID
+        config.client_secret  = Rails.application.config.instagramClientSecret
+      end
+      ig_client           = Instagram.client(access_token: Rails.application.config.instagramAccessToken)
+      ig_results          = ig_client.user_recent_media
+      instagram_id        = ig_results.first.link
+
+      #youtube
+      client = Google::APIClient.new(:application_name => Rails.application.config.applicationName,
+        :application_version => '0.1.0')
+      key = Google::APIClient::KeyUtils.load_from_pkcs12(Rails.application.config.googleP12, Rails.application.config.googlePassphrase)
+
+      client.authorization = Signet::OAuth2::Client.new(
+        :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
+        :audience => 'https://accounts.google.com/o/oauth2/token',
+        :scope => 'https://www.googleapis.com/auth/youtube',
+        :issuer => Rails.application.config.googleIssuer,
+        :signing_key => key)
+      client.authorization.fetch_access_token!
+
+      yt = client.discovered_api('youtube', 'v3')
+
+      results = client.execute!(
+        :api_method => yt.search.list,
+        :parameters => {
+          :part => 'snippet',
+          :maxResults => 1,
+          :q => 'Danny Carvalho'
+        }
+        )
+
+      youtube_id = results.data.items[0].id.videoId
+
+      #twitter
+      tw_client           = Twitter::REST::Client.new do |config|
+        config.consumer_key        = Rails.application.config.twitterConsumerKey
+        config.consumer_secret     = Rails.application.config.twitterConsumerSecret
+        config.access_token        = Rails.application.config.twitterAccessToken
+        config.access_token_secret = Rails.application.config.twitterAccessTokenSecret
+      end
+      tw_tweet            = tw_client.user_timeline("DannyICarvalho").first
+      twitter_id          = tw_tweet.id
+
+      #tumblr
+      tb_user             = Tumblr::User.new('velaseriat@outlook.com', Rails.application.config.tumblrPassword)
+      Tumblr.blog         = "just--space"
+      tb_posts            = Tumblr::Post.all
+      tumblr_id           = tb_posts.first['id']
+
+
+      @aloha = Aloha.first
+      @aloha.soundcloud_id  = soundcloud_id
+      @aloha.instagram_id   = instagram_id
+      @aloha.youtube_id     = youtube_id
+      @aloha.twitter_id     = twitter_id
+      @aloha.tumblr_id      = tumblr_id
+
+      @aloha.save
+
+
       respond_to do |format|
-        format.html { render 'console' }
+        format.html { redirect_to current_user }
       end
     end
   end
@@ -20,6 +88,7 @@ class UsersController < ApplicationController
     if !user_signed_in?
       redirect_to :root
     else
+      require 'share-counter'
       url = 'http://www.dannycarvalho.com'
       @counts = ShareCounter.all url
     end
@@ -308,15 +377,17 @@ class UsersController < ApplicationController
       vid = Array.new
 
       puts "Channel Id: " + results.data.items[0].snippet.channelId
-      results.data.items.each do |item|
-        puts "--------------------------------"
-        puts "Title: " + item.snippet.title
-        puts "Description: " + item.snippet.description
-        puts "Thumbnail: " + item.snippet.thumbnails.high.url
-        puts "Video ID: " + item.id.videoId
-        video_ids += item.id.videoId + ", "
-        vid << item.id.videoId
-      end
+        results.data.items.each do |item|
+          if item.id.kind == 'youtube#video'
+            puts "--------------------------------"
+            puts "Title: " + item.snippet.title
+            puts "Description: " + item.snippet.description
+            puts "Thumbnail: " + item.snippet.thumbnails.high.url
+            puts "Video ID: " + item.id.videoId
+            video_ids += item.id.videoId + ", "
+            vid << item.id.videoId
+          end
+        end
 
 
       results2 = client.execute!(
@@ -332,24 +403,25 @@ class UsersController < ApplicationController
       if !results.nil?
         if !results.data.nil?
           if !results.data.items[0].nil?
-            if results.data.items.size == results2.data.items.size
               update = true
               counter = 0
               results.data.items.each do |item|
                 if item.id.kind == 'youtube#video'
-
                   v = Video.where(url_path: item.id.videoId).first_or_initialize
 
                   v.title = item.snippet.title
-                  v.description = results2.data.items[counter].snippet.description
-                  v.url_path = item.id.videoId
-                  v.thumbnail_url = item.snippet.thumbnails.high.url
-                  if v.changed?
-                    v.save
+
+                  results2.data.items.each do |r2|
+                    if item.id.videoId == r2.id
+                      v.description = r2.snippet.description
+                    end
                   end
 
+                  v.url_path = item.id.videoId
+                  v.thumbnail_url = item.snippet.thumbnails.high.url
+                  v.save
+
                   counter = counter + 1
-                end
               end
             end
           end

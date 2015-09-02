@@ -1,6 +1,14 @@
 class AlohasController < ApplicationController
   before_action :set_aloha, only: [:show, :edit, :update, :destroy]
 
+  def social
+    @soundcloud_id = Aloha.first.soundcloud_id
+    @youtube_id = Aloha.first.youtube_id
+    @bandcamp_id = Album.first.bandcamp_id
+    @tumblr_id = Aloha.first.tumblr_id
+    @instagram_id = Aloha.first.instagram_id
+    @twitter_id = Aloha.first.twitter_id
+  end
 
   def about
     @content = Aloha.first.content

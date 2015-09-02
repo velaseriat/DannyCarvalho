@@ -61,6 +61,7 @@ GEM
       sass (>= 3.3.0)
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
+    buftok (0.2.0)
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
@@ -96,6 +97,7 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.5.2)
     extlib (0.9.16)
@@ -128,8 +130,15 @@ GEM
       signet (~> 0.6)
     hashie (3.4.2)
     hitimes (1.2.2-x86-mingw32)
+    httmultiparty (0.3.16)
+      httparty (>= 0.7.3)
+      mimemagic
+      multipart-post
+    http (0.6.4)
+      http_parser.rb (~> 0.6.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    http_parser.rb (0.6.0)
     httparty (0.13.5)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -158,17 +167,23 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    masonry-rails (0.2.4)
+      railties
     matenia-tumblr-api (0.1.6)
       activesupport
       httparty
     memoist (0.12.0)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     mime-types (2.6.1)
+    mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.18-x86-mingw32)
+    naught (1.0.0)
     netrc (0.10.3)
     nokogiri (1.6.6.2-x86-mingw32)
       mini_portile (~> 0.6.0)
@@ -248,10 +263,15 @@ GEM
       faraday (~> 0.9)
       jwt (~> 1.5)
       multi_json (~> 1.10)
+    simple_oauth (0.3.1)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
+    soundcloud (0.3.1)
+      hashie
+      httmultiparty (>= 0.3)
+      httparty (>= 0.7.3)
     sprockets (3.2.0)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
@@ -268,6 +288,17 @@ GEM
       hitimes
     turbolinks (2.5.3)
       coffee-rails
+    twitter (5.14.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.9)
+      faraday (~> 0.9.0)
+      http (~> 0.6.0)
+      http_parser.rb (~> 0.6.0)
+      json (~> 1.8)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     tzinfo-data (1.2015.5)
@@ -308,6 +339,7 @@ DEPENDENCIES
   instagram
   jbuilder (~> 2.0)
   jquery-rails
+  masonry-rails
   matenia-tumblr-api
   mysql2
   puma
@@ -319,8 +351,10 @@ DEPENDENCIES
   share-counter
   sidekiq
   sinatra (>= 1.3.0)
+  soundcloud
   stellar-js-rails
   turbolinks
+  twitter
   tzinfo-data
   uglifier (>= 1.3.0)
   valid_email

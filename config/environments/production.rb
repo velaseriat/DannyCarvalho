@@ -110,10 +110,22 @@ Rails.application.configure do
   config.googleCalendarID = @avanti["googleCalendarID"].to_s
   config.googleMapKey = @avanti["googleMapKey"].to_s
 
+  config.twitterConsumerKey = @avanti["twitterConsumerKey"].to_s
+  config.twitterConsumerSecret = @avanti["twitterConsumerSecret"].to_s
+  config.twitterAccessToken = @avanti["twitterAccessToken"].to_s
+  config.twitterAccessTokenSecret = @avanti["twitterAccessTokenSecret"].to_s
+
+
   config.instagramClientID = @avanti["instagramClientID"].to_s
   config.instagramClientSecret = @avanti["instagramClientSecret"].to_s
   config.instagramClientRedirectURI = @avanti["instagramClientRedirectURI"].to_s
   config.instagramAccessToken = @avanti["instagramAccessToken"].to_s
+
+  config.soundcloudClientID = @avanti["soundcloudClientID"].to_s
+  config.soundcloudClientSecret = @avanti["soundcloudClientSecret"].to_s
+
+  config.tumblrPassword = @avanti["tumblrPassword"].to_s
+
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
