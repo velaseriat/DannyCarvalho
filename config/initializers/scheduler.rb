@@ -46,74 +46,84 @@ end
 
 def update_events
   updated = false
-  starttime = DateTime.now.iso8601(2)
+      starttime = DateTime.now.iso8601(2)
 
-  client = Google::APIClient.new(:application_name => Rails.application.config.applicationName,
-    :application_version => '0.1.0')
-  key = Google::APIClient::KeyUtils.load_from_pkcs12(Rails.application.config.googleP12, Rails.application.config.googlePassphrase)
 
-  client.authorization = Signet::OAuth2::Client.new(
-    :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
-    :audience => 'https://accounts.google.com/o/oauth2/token',
-    :scope => 'https://www.googleapis.com/auth/calendar',
-    :issuer => Rails.application.config.googleIssuer,
-    :signing_key => key)
-  client.authorization.fetch_access_token!
+      puts "Updating at #{starttime}"
 
-  calendar_api = client.discovered_api('calendar', 'v3')
+      client = Google::APIClient.new(:application_name => Rails.application.config.applicationName,
+        :application_version => '0.1.0')
+      key = Google::APIClient::KeyUtils.load_from_pkcs12(Rails.application.config.googleP12, Rails.application.config.googlePassphrase)
 
-  results = client.execute!(
-    :api_method => calendar_api.events.list,
-    :parameters => {
-      :calendarId => Rails.application.config.googleCalendarID,
-      :orderBy => 'startTime',
-      :maxResults => 30,
-      :singleEvents => true,
-      :timeMin => starttime
-      })
-  if !results.nil?
-    if !results.data.nil?
-      if !results.data.summary.nil?
-        results.data.items.each do |item|
-          summary = item.summary
-          dateTime = item.start.dateTime
-          location = item.location
-          description = item.description
+      client.authorization = Signet::OAuth2::Client.new(
+        :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
+        :audience => 'https://accounts.google.com/o/oauth2/token',
+        :scope => 'https://www.googleapis.com/auth/calendar',
+        :issuer => Rails.application.config.googleIssuer,
+        :signing_key => key)
+      client.authorization.fetch_access_token!
 
-          if description.match('\[\[')
-            image_filepath = description.match('\[\[\S+\]\]').to_s
-            description.gsub!(image_filepath, '')
-            image_filepath.gsub!('[[', '')
-            image_filepath.gsub!(']]', '')
-          end
+      calendar_api = client.discovered_api('calendar', 'v3')
 
-          id = item.id
-          e = Event.where(event_id: id).first_or_initialize
-          e.summary = summary
-          e.dateTime = dateTime
-          e.location = location
-          e.description = description
-          e.event_id = id
+      puts "Using THIS: #{Rails.application.config.googleCalendarID}"
 
-          if e.image_filepath.file.nil?
-            e.remote_image_filepath_url = image_filepath
-          end
+      results = client.execute!(
+        :api_method => calendar_api.events.list,
+        :parameters => {
+          :maxResults => 30,
+          :calendarId => Rails.application.config.googleCalendarID,
+          :orderBy => 'startTime',
+          :singleEvents => true,
+          :timeMin => starttime
+          })
+      if !results.nil?
+        if !results.data.nil?
+          if !results.data.items.nil?
+            results.data.items.each do |item|
+              puts item
+              summary = item.summary
+              dateTime =  item.start.date.nil? ? item.start.dateTime : item.start.date
+              endDateTime =  item.end.date.nil? ? item.end.dateTime : item.end.date
+              location = item.location
+              description = item.description.nil? ? "" : item.description
 
-          if e.changed?
-            e.save
+              if description.match('\[\[')
+                image_filepath = description.match('\[\[\S+\]\]').to_s
+                description.gsub!(image_filepath, '')
+                image_filepath.gsub!('[[', '')
+                image_filepath.gsub!(']]', '')
+              end
+
+              id = item.id
+              #colorId = item.colorId
+
+              #check if event already exists on database
+              e = Event.where(event_id: id).first_or_initialize
+              e.summary = summary
+              e.dateTime = dateTime
+              e.endDateTime = endDateTime
+              e.location = location
+              e.description = description
+              e.event_id = id
+
+              if e.image_filepath.file.nil?
+                e.remote_image_filepath_url = image_filepath
+              end
+
+              if e.changed?
+                e.save
+              end
+            end
           end
         end
       end
-    end
-  end
 
-  @events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
-  @events.each do |eve|
-    # if it hasn't updated, then it doesn't exist in Google calendar. Delete it.
-    if (((DateTime.now - eve.update_at)*24).to_i > 2)
-      eve.destroy
-    end
-  end
+      @events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
+      @events.each do |eve|
+        if (((DateTime.now - eve.update_at)*24).to_i > 2)
+          eve.destroy
+        end
+      end
 end
 
 
