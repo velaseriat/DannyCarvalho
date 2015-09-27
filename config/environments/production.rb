@@ -139,4 +139,8 @@ Rails.application.configure do
 
   config.startScheduler = false
 
+  ENV['DEVELOPMENT_HOST'] = @avanti["developmentHost"];
+  ENV['DEVELOPMENT_USERNAME'] = @avanti["developmentUsername"];
+  ENV['DEVELOPMENT_PASSWORD'] = @avanti["developmentPassword"];
+
 end

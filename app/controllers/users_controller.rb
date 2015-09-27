@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       require 'soundcloud'
       require 'tumblr'
       require 'twitter'
+      
       #soundcloud
       sc_client           = Soundcloud.new(client_id: Rails.application.config.soundcloudClientID)
       sc_track            = sc_client.get('/tracks', limit: 1,  user_id: 44982439).first
@@ -320,7 +321,6 @@ class UsersController < ApplicationController
               if e.image_filepath.file.nil?
                 e.remote_image_filepath_url = image_filepath
               end
-
               if e.changed?
                 e.save
               end
@@ -329,12 +329,12 @@ class UsersController < ApplicationController
         end
       end
 
-      @events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
-      @events.each do |eve|
-        if (((DateTime.now - eve.update_at)*24).to_i > 2)
-          eve.destroy
-        end
-      end
+      # @events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
+      # @events.each do |eve|
+      #   if (((Time.zone.now - eve.updated_at)*24).to_i > 2)
+      #     eve.destroy
+      #   end
+      # end
 
       respond_to do |format|
         format.html { redirect_to current_user }
