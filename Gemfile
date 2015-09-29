@@ -57,7 +57,6 @@ gem 'stellar-js-rails'
 gem 'wow-rails'
 gem 'share-counter'
 gem 'cloudinary'
-gem 'masonry-rails'
 
 gem 'google-api-client'
 gem 'instagram'

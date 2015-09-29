@@ -44,7 +44,7 @@ class AlohasController < ApplicationController
 
     @product1 = Product.order(:release).first
 
-    @blogs = Blog.order(published: :desc).limit(5)
+    @igrams = Igram.order(dateTime: :desc).limit(3)
   end
 
   # GET /alohas/1

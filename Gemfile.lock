@@ -167,8 +167,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    masonry-rails (0.2.4)
-      railties
     matenia-tumblr-api (0.1.6)
       activesupport
       httparty
@@ -339,7 +337,6 @@ DEPENDENCIES
   instagram
   jbuilder (~> 2.0)
   jquery-rails
-  masonry-rails
   matenia-tumblr-api
   mysql2 (~> 0.3.20)
   puma (~> 2.14.0)

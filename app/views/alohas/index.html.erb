@@ -10,7 +10,7 @@ $(document).ready( function() {
   <%= image_tag 'background.jpg', :id=> "header-background-image" %>
 </div>
 
-<div class="embed-responsive embed-responsive-16by9" id="lava-rock">
+<!-- <div class="embed-responsive embed-responsive-16by9" id="lava-rock">
   <video id="header-video" class="embed-responsive-item" autoplay="autoplay" loop="loop" autobuffer="autobuffer" muted="muted" poster="http://il7.picdn.net/shutterstock/videos/4648820/thumb/1.jpg">
     <source type="video/mp4" src="http://ak5.picdn.net/shutterstock/videos/4648820/preview/stock-footage-fire-knife-dancer-performs-at-sunset.mp4">
     <source type="video/webm" src="http://ak5.picdn.net/shutterstock/videos/4648820/preview/stock-footage-fire-knife-dancer-performs-at-sunset.webm">
@@ -40,7 +40,31 @@ $(document).ready( function() {
     <br>
     <br>
   </div>
+</div> -->
+
+<div class="embed-responsive embed-responsive-16by9" id="header-video">
+<div class="spaces"></div>
+  <div class="spaces"></div>
+  <div class="container-fluid">
+    <div class="row" id="header-jumbotron">
+      <div class="col-lg-5 col-lg-offset-7" id="header-jumbotron-background">
+        <h1 class="text-center"><span id="typist-section">Hawaiian</span>Music.</h1>
+        <br>
+      <p class="lead">
+        E Komo Mai! Welcome to my new website. Here you may find information about me, my CDs, upcoming shows, and other exciting news. Stay posted, as we are currently working on adding more new and exciting features to this site to improve the user experience. Enjoy!
+        <br><br>
+        -Danny
+      </p>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
 </div>
+
+
+
+
 
 <div id="myCarousel" class="carousel slide">
   <!-- Indicators -->
@@ -253,28 +277,34 @@ $(document).ready( function() {
         </div>
       </div>
 
-      <br>
 
       <div class="row" id="header-row">
         <div class="col-md-8">
-          <h4>Latest Blogs</h4>
+          <h4>Instagram</h4>
         </div>
       </div>
-      <% @blogs.each do |blog| %>
-        <h5>
-          <%= blog.published.strftime("%m/%d") %>
-          <%= link_to blog do %>
-            <small><%= ' ' + blog.title %></small>
+      <div class="row">
+      <% @igrams.each do |igram| %>
+        <div class="col-xs-4">
+          <%= link_to igram do %>
+            <div class="thumbnail" id="my-panel-heading">
+              <%= image_tag igram.image_path.thumbnail.to_s, {height: 50} %>
+              <div class="caption">
+                <h3><%= igram.dateTime.strftime("%m/%d") %></h3>
+              </div>
+            </div>
           <% end %>
-        </h5>
+        </div>
       <% end %>
+      </div>
 
       <h5 class="text-center">
-        <%= link_to about_path do %>
-        <i class="fa fa-pencil"></i>
-        Read my blogs
+        <%= link_to igrams_path do %>
+        <i class="fa fa-photo"></i>
+        Recent Photos!
         <% end %>
       </h5>
+
     </div>
   </div>
   <div class="row">
