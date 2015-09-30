@@ -160,13 +160,15 @@ def update_youtube
 
   puts "Channel Id: " + results.data.items[0].snippet.channelId
   results.data.items.each do |item|
-    puts "--------------------------------"
-    puts "Title: " + item.snippet.title
-    puts "Description: " + item.snippet.description
-    puts "Thumbnail: " + item.snippet.thumbnails.high.url
-    puts "Video ID: " + item.id.videoId
-    video_ids += item.id.videoId + ", "
-    vid << item.id.videoId
+    if item.id.kind == 'youtube#video'
+      puts "--------------------------------"
+      puts "Title: " + item.snippet.title
+      puts "Description: " + item.snippet.description
+      puts "Thumbnail: " + item.snippet.thumbnails.high.url
+      puts "Video ID: " + item.id.videoId
+      video_ids += item.id.videoId + ", "
+      vid << item.id.videoId
+    end
   end
 
 
@@ -183,28 +185,25 @@ def update_youtube
   if !results.nil?
     if !results.data.nil?
       if !results.data.items[0].nil?
+        update = true
+        counter = 0
+        results.data.items.each do |item|
+          if item.id.kind == 'youtube#video'
+            v = Video.where(url_path: item.id.videoId).first_or_initialize
 
-          update = true
-          counter = 0
-          results.data.items.each do |item|
-            if item.id.kind == 'youtube#video'
+            v.title = item.snippet.title
 
-              v = Video.where(url_path: item.id.videoId).first_or_initialize
-
-              v.title = item.snippet.title
-              results2.data.items.each do |r2|
-                if item.id.videoId == r2.id
-                  v.description = r2.snippet.description
-                end
+            results2.data.items.each do |r2|
+              if item.id.videoId == r2.id
+                v.description = r2.snippet.description
               end
-              v.url_path = item.id.videoId
-              v.thumbnail_url = item.snippet.thumbnails.high.url
-              if v.changed?
-                v.save
-              end
+            end
 
-              counter = counter + 1
+            v.url_path = item.id.videoId
+            v.thumbnail_url = item.snippet.thumbnails.high.url
+            v.save
 
+            counter = counter + 1
           end
         end
       end
@@ -343,7 +342,7 @@ def update_social
 end
 
 
-s.every '6h' do
+s.every '2h' do
   if ENV['START_SCHEDULER'] = 'start'
     update_events
     update_blogger
@@ -354,7 +353,7 @@ s.every '6h' do
   end
 end
 
-s.every '1h' do
+s.every '45m' do
   if ENV['START_SCHEDULER'] = 'start'
     update_social
     puts "Updated Social at at: #{Time.now}"
