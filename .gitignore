@@ -73,6 +73,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+dump.rdb
+
 # wtf rails
 *.avanti
 *.p12
