@@ -114,13 +114,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def turn_on_mailer
+    require 'platform-api'
+    heroku = PlatformAPI.connect_oauth(Rails.application.config.herokuAuthToken)
+    heroku.formation.update(Rails.application.config.herokuAppName, 'worker', {'quantity' => 1})
+  end
+
   def send_custom_emails
     if !user_signed_in?
       redirect_to :root
     else
       @event = Event.first
 
-      SubscriberMailer.turn_on_mailer
+      turn_on_mailer
 
       Subscriber.all.each do |s|
         if !s.opted_out
@@ -189,7 +195,8 @@ class UsersController < ApplicationController
         @events << Event.find(se)
       end
 
-      SubscriberMailer.turn_on_mailer
+      #please for the love of god fix this
+      turn_on_mailer
 
       Subscriber.all.each do |s|
         if !s.opted_out
