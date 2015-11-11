@@ -102,6 +102,9 @@ class UsersController < ApplicationController
     if !user_signed_in?
       redirect_to :root
     else
+      require 'platform-api'
+      heroku = PlatformAPI.connect_oauth(Rails.application.config.herokuAuthToken)
+      heroku.formation.update(Rails.application.config.herokuAppName, 'worker', {'quantity' => 1})
       if ENV['STARTED_SCHEDULER'] != 'start'
         ENV['STARTED_SCHEDULER'] = 'start'
       end
@@ -117,7 +120,7 @@ class UsersController < ApplicationController
     else
       @event = Event.first
 
-      SubscriberMailer.turn_on_mailer.deliver_later
+      SubscriberMailer.turn_on_mailer
 
       Subscriber.all.each do |s|
         if !s.opted_out
@@ -186,7 +189,7 @@ class UsersController < ApplicationController
         @events << Event.find(se)
       end
 
-      SubscriberMailer.turn_on_mailer.deliver_later
+      SubscriberMailer.turn_on_mailer
 
       Subscriber.all.each do |s|
         if !s.opted_out
