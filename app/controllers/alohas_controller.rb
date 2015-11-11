@@ -11,7 +11,6 @@ class AlohasController < ApplicationController
   end
 
   def about
-    @content = Aloha.first.content
     respond_to do |format|
       format.html { render :about }
     end

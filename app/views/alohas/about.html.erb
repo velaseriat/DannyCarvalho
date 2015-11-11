@@ -7,14 +7,33 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="pull-left">About Danny Carvalho</h4>
-      <%= button_to 'Read on Blogger', '#', :class=> 'btn btn-primary pull-right', method: 'get' %> 
     </div>
     <div class="panel-body" id="blog-show-content">
+      <div class = "row">
+        <div>
+          <%= image_tag 'http://res.cloudinary.com/velaseriat/image/upload/v1447282178/shapeimage_3.png', class: "img-responsive center-block"%>
+          <br>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+          <p>
+            At 23 years old, Danny Carvalho represents a new generation of Hawaiian music.  A virtuosic slack key guitar player, Carvalho fuses flawless technique with dynamic performances and raw emotion, stirring the heart and soul.
+          </p>
+          <p>
+            Carvalho began his formal studies with Ozzie Kotani at age 10. Kotani, recognizing his raw talent, nurtured it by featuring Carvalho in his performances, jump-starting a wildly prolific musical journey. He would study under other teachers, including multi-Grammy-award winning Dennis Kamakahi and Neva Rego, and also independently study the music of many other Hawaiian legends.
+          </p>
+          <p>
+            In 2004, Carvalho was the first slack key player to be featured on the nationally syndicated program From The Top.  Two years later, he made his first of two appearances on Garrison Keilor’s A Prairie Home Companion and released his first album, Slack Key Journey - On My Way.  His second album, Somewhere,  was released in 2008, and nominated in the Na Hoku Hanohano Awards for Slack Key Album of the year.  Carvalho’s music was also featured in Alexander Payne’s Academy Award winning film, The Descendants.
+          </p>
+          <p>
+            After years of maturing as a musician, he also found his voice as a formidable singer, producer, band-leader, and writer. He put these new skills to the test in 2013 with the release of his third album, Ke Au Hou. “Perpetuation of Hawaiian knowledge has been a constant in my career, and is more prominent now than ever with my study of culture, history, language and navigation,” says to Carvalho, who recently graduated from the University of Hawaii with a bachelor's degree in Hawaiian Studies.  His love of Hawaiian culture continues to inspire his music while keeping him connected to the community.  When asked what inspires his music, Carvalho says, “My music has always been and will always be about emotion, heart, and soul, above all else. No matter the style, genre, and influences I draw from, my music is about spreading the Hawaiian culture and soul through music.”
+          </p>
+        </div>
+      </div>
+      
       <br>
-      <%= @content.html_safe %>
+      
     </div>
     <div class="panel-footer">
-      <%= link_to 'Read on Blogger', '#' %> 
     </div>
 
   </div>

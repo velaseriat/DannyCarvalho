@@ -83,6 +83,10 @@ Rails.application.configure do
   config.herokuAppName = @avanti["herokuAppName"].to_s
   config.herokuAuthToken = @avanti["herokuAuthToken"].to_s
 
+  ENV["HEROKU_DATABASE"] = @avanti["herokuDatabase"].to_s
+  ENV["HEROKU_USERNAME"] = @avanti["herokuUsername"].to_s
+  ENV["HEROKU_PASSWORD"] = @avanti["herokuPassword"].to_s
+  ENV["HEROKU_HOST"] = @avanti["herokuHost"].to_s
 
 
   #config.facebookAppID = @avanti["facebookAppID"].to_s

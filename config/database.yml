@@ -9,11 +9,11 @@ development:
    adapter: mysql2 # replace with remote db type if different
    encoding: utf8 # modify if it is different
    reconnect: true
-   database: heroku_310238e0ad3fa41 # remote database name
+   database: <%= ENV["HEROKU_DATABASE"] %> # remote database name
    pool: 5
-   username: b80bbdf06517d5 # username for remote database
-   password: d813fc45  # password for remote database
-   host: us-cdbr-iron-east-02.cleardb.net # this will be host where database is installed123456789
+   username: <%= ENV["HEROKU_USERNAME"] %> # username for remote database
+   password: <%= ENV["HEROKU_PASSWORD"] %>  # password for remote database
+   host: <%= ENV["HEROKU_HOST"] %> # this will be host where database is installed123456789
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
