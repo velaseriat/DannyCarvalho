@@ -80,6 +80,9 @@ Rails.application.configure do
 
   config.tumblrPassword = @avanti["tumblrPassword"].to_s
 
+  config.herokuAppName = @avanti["herokuAppName"].to_s
+  config.herokuAuthToken = @avanti["herokuAuthToken"].to_s
+
 
 
   #config.facebookAppID = @avanti["facebookAppID"].to_s

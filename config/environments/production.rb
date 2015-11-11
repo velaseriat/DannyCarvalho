@@ -126,6 +126,9 @@ Rails.application.configure do
 
   config.tumblrPassword = @avanti["tumblrPassword"].to_s
 
+  config.herokuAppName = @avanti["herokuAppName"].to_s
+  config.herokuAuthToken = @avanti["herokuAuthToken"].to_s
+
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

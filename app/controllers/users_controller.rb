@@ -116,11 +116,17 @@ class UsersController < ApplicationController
       redirect_to :root
     else
       @event = Event.first
+
+      SubscriberMailer.turn_on_mailer.deliver_later
+
       Subscriber.all.each do |s|
         if !s.opted_out
           SubscriberMailer.send_custom_email(s, params[:custom_text]).deliver_later
         end
       end
+
+      SubscriberMailer.turn_off_mailer.deliver_later
+
       respond_to do |format|
         format.html { redirect_to current_user }
       end
@@ -170,6 +176,8 @@ class UsersController < ApplicationController
   end
 
   def send_event_emails
+    require 'platform-api'
+
     if !user_signed_in?
       redirect_to :root
     else
@@ -177,11 +185,17 @@ class UsersController < ApplicationController
       params[:selected_events].each do |se|
         @events << Event.find(se)
       end
+
+      SubscriberMailer.turn_on_mailer.deliver_later
+
       Subscriber.all.each do |s|
         if !s.opted_out
           SubscriberMailer.send_event_email(s, @events).deliver_later
         end
       end
+
+      SubscriberMailer.turn_off_mailer.deliver_later
+      
       respond_to do |format|
         format.html { redirect_to current_user }
       end
