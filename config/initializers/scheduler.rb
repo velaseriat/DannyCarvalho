@@ -9,7 +9,7 @@ require 'instagram'
 s = Rufus::Scheduler.singleton
 #@event = Event.first
 
-def turn_on_mailer
+def turn_off_mailer
   require 'platform-api'
   heroku = PlatformAPI.connect_oauth(Rails.application.config.herokuAuthToken)
   heroku.formation.update(Rails.application.config.herokuAppName, 'worker', {'quantity' => 1})
