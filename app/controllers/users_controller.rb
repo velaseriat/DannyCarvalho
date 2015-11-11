@@ -117,7 +117,7 @@ class UsersController < ApplicationController
     else
       @event = Event.first
 
-      SubscriberMailer.turn_on_mailer
+      SubscriberMailer.turn_on_mailer.deliver_later
 
       Subscriber.all.each do |s|
         if !s.opted_out
@@ -186,7 +186,7 @@ class UsersController < ApplicationController
         @events << Event.find(se)
       end
 
-      SubscriberMailer.turn_on_mailer
+      SubscriberMailer.turn_on_mailer.deliver_later
 
       Subscriber.all.each do |s|
         if !s.opted_out
