@@ -12,16 +12,4 @@ class SubscriberMailer < ActionMailer::Base
   	@text = text
   	mail to: subscriber.email, subject: "Danny Carvalho Newsletter"
   end
-
-  def turn_on_mailer
-    require 'platform-api'
-    heroku = PlatformAPI.connect_oauth(Rails.application.config.herokuAuthToken)
-    heroku.formation.update(Rails.application.config.herokuAppName, 'worker', {'quantity' => 1})
-  end
-
-  def turn_off_mailer
-    require 'platform-api'
-    heroku = PlatformAPI.connect_oauth(Rails.application.config.herokuAuthToken)
-    heroku.formation.update(Rails.application.config.herokuAppName, 'worker', {'quantity' => 0})
-  end
 end

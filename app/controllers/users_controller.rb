@@ -117,15 +117,13 @@ class UsersController < ApplicationController
     else
       @event = Event.first
 
-      SubscriberMailer.turn_on_mailer
+      turn_on_mailer
 
       Subscriber.all.each do |s|
         if !s.opted_out
           SubscriberMailer.send_custom_email(s, params[:custom_text]).deliver_later
         end
       end
-
-      SubscriberMailer.turn_off_mailer.deliver_later
 
       respond_to do |format|
         format.html { redirect_to current_user }
@@ -175,9 +173,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def send_event_emails
+  def turn_on_mailer
     require 'platform-api'
+    heroku = PlatformAPI.connect_oauth(Rails.application.config.herokuAuthToken)
+    heroku.formation.update(Rails.application.config.herokuAppName, 'worker', {'quantity' => 1})
+  end
 
+  def send_event_emails
     if !user_signed_in?
       redirect_to :root
     else
@@ -186,15 +188,13 @@ class UsersController < ApplicationController
         @events << Event.find(se)
       end
 
-      SubscriberMailer.turn_on_mailer
+      turn_on_mailer
 
       Subscriber.all.each do |s|
         if !s.opted_out
           SubscriberMailer.send_event_email(s, @events).deliver_later
         end
       end
-
-      SubscriberMailer.turn_off_mailer.deliver_later
       
       respond_to do |format|
         format.html { redirect_to current_user }
