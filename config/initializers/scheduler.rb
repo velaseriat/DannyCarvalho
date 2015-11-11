@@ -8,13 +8,6 @@ require 'instagram'
 #
 s = Rufus::Scheduler.singleton
 #@event = Event.first
-
-def turn_off_mailer
-  require 'platform-api'
-  heroku = PlatformAPI.connect_oauth(Rails.application.config.herokuAuthToken)
-  heroku.formation.update(Rails.application.config.herokuAppName, 'worker', {'quantity' => 1})
-end
-
 def update_instagram
   
   Instagram.configure do |config|
@@ -366,5 +359,3 @@ s.every '45m' do
     puts "Updated Social at at: #{Time.now}"
   end
 end
-
-turn_off_mailer
