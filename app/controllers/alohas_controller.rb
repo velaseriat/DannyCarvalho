@@ -39,9 +39,9 @@ class AlohasController < ApplicationController
     @video2 = Video.second
     @video3 = Video.third
 
-    @album1 = Album.order(:release).first
+    @album1 = Album.order(:release).last
 
-    @product1 = Product.order(:release).first
+    @product1 = Product.order(:release).last
 
     @igrams = Igram.order(dateTime: :desc).limit(3)
   end
