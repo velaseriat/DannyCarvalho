@@ -70,7 +70,7 @@
     text-shadow: 1px 1px 1px  black;
   }
   #header-jumbotron-background{
-    background-color:rgba(0, 0, 0, 0.5);
+    
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -97,7 +97,9 @@
             }
 }
 
-
+#header-video{
+  background-color:rgba(0, 0, 0, 0.5);
+}
 
 .foreground-panel{
   padding: 10px;
