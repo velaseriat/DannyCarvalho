@@ -1,6 +1,7 @@
 class AlohasController < ApplicationController
   before_action :set_aloha, only: [:show, :edit, :update, :destroy]
 
+  #update social websites for social collage
   def social
     @soundcloud_id = Aloha.first.soundcloud_id
     @youtube_id = Aloha.first.youtube_id
