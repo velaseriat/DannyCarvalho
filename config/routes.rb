@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get     'users/:id/send_event_emails'   => 'users#send_event_emails'
   get     'users/:id/update_youtube'      => 'users#update_youtube'
   get     'users/:id/update_blogger'      => 'users#update_blogger'
-  get     'users/:id/update_about'        => 'users#update_about'
+  # get     'users/:id/update_about'        => 'users#update_about'
   get     'users/:id/update_instagram'    => 'users#update_instagram'
   get     'users/:id/send_custom_emails'  => 'users#send_custom_emails'
   get     'users/:id/reinitialize_files'  => 'users#reinitialize_files'

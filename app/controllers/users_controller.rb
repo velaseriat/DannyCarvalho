@@ -523,47 +523,47 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_about
-    if !user_signed_in?
-      redirect_to :root
-    else
-      client = Google::APIClient.new(:application_name => Rails.application.config.applicationName,
-        :application_version => '0.1.0')
-      key = Google::APIClient::KeyUtils.load_from_pkcs12(Rails.application.config.googleP12, Rails.application.config.googlePassphrase)
+  # def update_about
+  #   if !user_signed_in?
+  #     redirect_to :root
+  #   else
+  #     client = Google::APIClient.new(:application_name => Rails.application.config.applicationName,
+  #       :application_version => '0.1.0')
+  #     key = Google::APIClient::KeyUtils.load_from_pkcs12(Rails.application.config.googleP12, Rails.application.config.googlePassphrase)
 
-      client.authorization = Signet::OAuth2::Client.new(
-        :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
-        :audience => 'https://accounts.google.com/o/oauth2/token',
-        :scope => 'https://www.googleapis.com/auth/blogger',
-        :issuer => Rails.application.config.googleIssuer,
-        :signing_key => key)
-      client.authorization.fetch_access_token!
+  #     client.authorization = Signet::OAuth2::Client.new(
+  #       :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
+  #       :audience => 'https://accounts.google.com/o/oauth2/token',
+  #       :scope => 'https://www.googleapis.com/auth/blogger',
+  #       :issuer => Rails.application.config.googleIssuer,
+  #       :signing_key => key)
+  #     client.authorization.fetch_access_token!
 
-      blogger = client.discovered_api('blogger', 'v3')
+  #     blogger = client.discovered_api('blogger', 'v3')
 
-      results = client.execute!(
-        :api_method => blogger.pages.get,
-        :parameters => {
-          :blogId => '5193859969315643642',
-          :pageId => '412588053249616065'
-        }
-        )
+  #     results = client.execute!(
+  #       :api_method => blogger.pages.get,
+  #       :parameters => {
+  #         :blogId => '5193859969315643642',
+  #         :pageId => '412588053249616065'
+  #       }
+  #       )
 
-      if !results.nil?
-        if !results.data.nil?
-          if !results.data.content.nil?
-            Aloha.delete_all
-            content = results.data.content
-            Aloha.create content: content, name: 'E Komo Mai!'
-          end
-        end
-      end
+  #     if !results.nil?
+  #       if !results.data.nil?
+  #         if !results.data.content.nil?
+  #           Aloha.delete_all
+  #           content = results.data.content
+  #           Aloha.create content: content, name: 'E Komo Mai!'
+  #         end
+  #       end
+  #     end
 
-      respond_to do |format|
-        format.html { redirect_to current_user }
-      end
-    end
-  end
+  #     respond_to do |format|
+  #       format.html { redirect_to current_user }
+  #     end
+  #   end
+  # end
 
   # GET /users
   # GET /users.json
