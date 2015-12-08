@@ -7,7 +7,7 @@
 <%= image_tag @song.filepath.to_s, class: 'img-responsive img-rounded', id: 'song-photo' %>
 <br>
 <p class="lead text-center">About This Song</p>
-<%= @song.description %>
+<%= @song.description.html_safe %>
 <br>
 <br>
 <p class="lead">

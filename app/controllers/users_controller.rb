@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       redirect_to :root
     else
       require 'soundcloud'
-      require 'tumblr'
+      #require 'tumblr'
       require 'twitter'
       
       #soundcloud
@@ -63,10 +63,10 @@ class UsersController < ApplicationController
       twitter_id          = tw_tweet.id
 
       #tumblr
-      tb_user             = Tumblr::User.new('velaseriat@outlook.com', Rails.application.config.tumblrPassword)
-      Tumblr.blog         = "just--space"
-      tb_posts            = Tumblr::Post.all
-      tumblr_id           = tb_posts.first['id']
+      #tb_user             = Tumblr::User.new('velaseriat@outlook.com', Rails.application.config.tumblrPassword)
+      #Tumblr.blog         = "just--space"
+      #tb_posts            = Tumblr::Post.all
+      #tumblr_id           = tb_posts.first['id']
 
 
       @aloha = Aloha.first
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
       @aloha.instagram_id   = instagram_id
       @aloha.youtube_id     = youtube_id
       @aloha.twitter_id     = twitter_id
-      @aloha.tumblr_id      = tumblr_id
+      #@aloha.tumblr_id      = tumblr_id
 
       @aloha.save
 

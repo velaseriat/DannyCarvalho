@@ -49,6 +49,7 @@
 
 <br>
 <div class="container">
+  <% unless @products.empty? %>
   <h3 class="text-center">Merchandise</h3>
   <% @products.each do |product| %>
   <div class="row">
@@ -76,6 +77,9 @@
   </div>
   <hr>
   <% end %>
+  <% end %>
+
+  <% unless @albums.empty? %>
   <h3 class="text-center">Albums</h3>
   <% @albums.each do |album| %>
   <div class="row">
@@ -102,6 +106,7 @@
     </div>
   </div>
   <hr>
+  <% end %>
   <% end %>
 </div>
 <br>

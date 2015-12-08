@@ -1,4 +1,4 @@
 class Song < ActiveRecord::Base
 	belongs_to :album
-	mount_uploader :filepath, PhotoUploader
+	mount_uploader :filepath, AlbumImageUploader
 end

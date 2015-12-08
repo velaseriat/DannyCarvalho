@@ -7,7 +7,7 @@
 			<iframe style="border: 0; width: 100%; height: 786px;" src=<%= "https://bandcamp.com/EmbeddedPlayer/album=" + @album.bandcamp_id + "/size=large/bgcol=333333/linkcol=4ec5ec/transparent=true/" %> seamless><a href="http://bandcamp.com">Danny Carvalho Music</a></iframe>
 		</div>
 		<div class="col-md-5">
-			<%= @album.description %>
+			<%= @album.description.html_safe %>
 			<br>
 			Released: <%= @album.release.strftime("%B %Y") %>
 			<br><br>
@@ -19,7 +19,7 @@
             	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
           	</form>
           	<br>
-          	<h4 class="text-center">Track List</h4>
+          	<h4>Track List</h4>
           	<% @songs.each do |song| %>
           		<%= link_to (song.track_num.to_s + '. ' + song.title), song %>
           		<br>

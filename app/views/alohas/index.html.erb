@@ -192,6 +192,7 @@ $(document).ready( function() {
           <% end %>
         </div>
       </div>
+      <% unless @album1.nil? %>
       <div class="media">
         <div class="media-left media-top">
           <%= link_to @album1 do %>
@@ -199,15 +200,38 @@ $(document).ready( function() {
           <% end %>
           <br>
           <p class="lead" id="storefront-price"><%= @album1.price %></p>
-          <%= link_to 'More info', @product1 %>
+          <%= link_to 'More info', @album1 %>
         </div>
         <div class="media-body">
           <p class="lead media-heading"><%= @album1.name %></p>
-            <div id="storefront-text"><%= @album1.description %></div>
+            <div id="storefront-text"><%= ActionView::Base.full_sanitizer.sanitize(@album1.description) %></div>
             <br>
         </div>
       </div>
+      <% else %>
+        <p> New music coming soon! </p>
+      <% end %>
+
+      <% unless @album2.nil? %>
+      <div class="media">
+        <div class="media-left media-top">
+          <%= link_to @album2 do %>
+            <%= image_tag @album2.image_filepath.thumbnail.to_s, class:"media-object", id: 'storefront-image' %>
+          <% end %>
+          <br>
+          <p class="lead" id="storefront-price"><%= @album2.price %></p>
+          <%= link_to 'More info', @album2 %>
+        </div>
+        <div class="media-body">
+          <p class="lead media-heading"><%= @album2.name %></p>
+            <div id="storefront-text"><%= ActionView::Base.full_sanitizer.sanitize(@album2.description) %></div>
+            <br>
+        </div>
+      </div>
+      <% end %>
+
       <hr>
+      <% unless @product1.nil? %>
       <div class="media">
         <div class="media-body">
           <p class="lead media-heading"><%= @product1.name %></p>
@@ -223,6 +247,9 @@ $(document).ready( function() {
           <%= link_to 'More info', @product1 %>
         </div>
       </div>
+      <% else %>
+        <p> Merchandise coming soon! </p>
+      <% end %>
       <br>
       <h4 class="text-center">
         <%= link_to products_path do %>

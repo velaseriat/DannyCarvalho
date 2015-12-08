@@ -6,7 +6,7 @@ class AlohasController < ApplicationController
     @soundcloud_id = Aloha.first.soundcloud_id
     @youtube_id = Aloha.first.youtube_id
     @bandcamp_id = Album.first.bandcamp_id
-    @tumblr_id = Aloha.first.tumblr_id
+    #@tumblr_id = Aloha.first.tumblr_id
     @instagram_id = Aloha.first.instagram_id
     @twitter_id = Aloha.first.twitter_id
   end
@@ -41,6 +41,7 @@ class AlohasController < ApplicationController
     @video3 = Video.third
 
     @album1 = Album.order(:release).last
+    @album2 = Album.order(:release).offset(1).last
 
     @product1 = Product.order(:release).last
 
