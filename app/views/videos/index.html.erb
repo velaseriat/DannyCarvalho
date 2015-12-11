@@ -1,6 +1,6 @@
 <div class="spaces"></div>
 
-<h1 class="text-center">Put On Some Headphones!<small> You'll probably cry</small></h1>
+<h1 class="text-center">YouTube Videos</h1>
 
 <div class="spaces"></div>
 
@@ -37,6 +37,7 @@
 <br>
 
 <div class="container-fluid">
+  <%= "<center><p> No videos to display! </p></center>".html_safe if @video_sets.first.count == 0 %>
   <% @video_sets.each do |vs| %>
     <div class="row">
       <% vs.each do |v| %>

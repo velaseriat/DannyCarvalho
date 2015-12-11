@@ -1,7 +1,7 @@
 
 <div class="spaces"></div>
 
-<h1 class="text-center">Good Memories, ah?<small> Let's go back</small></h1>
+<h1 class="text-center">New Photos</h1>
 
 <div class="spaces"></div>
 <div class="container">
@@ -36,6 +36,7 @@
 
 
 <div class="container">
+  <%= "<center><p> No photos to display! </p></center>".html_safe if @photo_sets.first.count == 0 %>
   <% @photo_sets.each do |photos| %>
     <div class="row">
       <% photos.each do |ph| %>

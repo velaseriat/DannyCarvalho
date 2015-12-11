@@ -1,6 +1,6 @@
 <div class="spaces"></div><div class="spaces"></div>
 
-<h1 class="text-center">The Goods<small> Buuuut there's nothing here...</small></h1>
+<h1 class="text-center">The Music Shop</h1>
 
 <% if user_signed_in? %>
 <div class="table-responsive">
@@ -49,36 +49,6 @@
 
 <br>
 <div class="container">
-  <% unless @products.empty? %>
-  <h3 class="text-center">Merchandise</h3>
-  <% @products.each do |product| %>
-  <div class="row">
-    <div class="col-md-3">
-      <br>
-      <%= image_tag product.image_filepath.nil? ? 'default.jpg' : product.image_filepath.thumbnail.to_s, class: 'img-responsive', id: 'product-image' %>
-      <br>
-    </div>
-    <div class="col-md-9">
-      <br>
-      <p class="lead" id="product-index-title"><%= product.name %></p>
-      <p><%= product.data %></p>
-      <p>Available: <%= product.release.strftime("%B %y") %></p>
-      <p><%= link_to 'More info', product %></p>
-      <br>
-      <span class="lead"><%= product.price %></span>
-      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-              <input type="hidden" name="cmd" value="_s-xclick">
-              <input type="hidden" name="hosted_button_id" value=<%= product.paypal %>>
-              <input type="image" src="https://res.cloudinary.com/velaseriat/image/upload/v1439329958/addtocart_t0balc.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-              <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-            </form>
-      
-    </div>
-  </div>
-  <hr>
-  <% end %>
-  <% end %>
-
   <% unless @albums.empty? %>
   <h3 class="text-center">Albums</h3>
   <% @albums.each do |album| %>
@@ -107,6 +77,39 @@
   </div>
   <hr>
   <% end %>
+  <% end %>
+
+
+  <h3 class="text-center">Merchandise</h3>
+  <% unless @products.empty? %>
+  <% @products.each do |product| %>
+  <div class="row">
+    <div class="col-md-3">
+      <br>
+      <%= image_tag product.image_filepath.nil? ? 'default.jpg' : product.image_filepath.thumbnail.to_s, class: 'img-responsive', id: 'product-image' %>
+      <br>
+    </div>
+    <div class="col-md-9">
+      <br>
+      <p class="lead" id="product-index-title"><%= product.name %></p>
+      <p><%= product.data %></p>
+      <p>Available: <%= product.release.strftime("%B %y") %></p>
+      <p><%= link_to 'More info', product %></p>
+      <br>
+      <span class="lead"><%= product.price %></span>
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="hidden" name="cmd" value="_s-xclick">
+              <input type="hidden" name="hosted_button_id" value=<%= product.paypal %>>
+              <input type="image" src="https://res.cloudinary.com/velaseriat/image/upload/v1439329958/addtocart_t0balc.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+      
+    </div>
+  </div>
+  <hr>
+  <% end %>
+  <% else %>
+  <center><p>Merchandise coming soon! Please come back for updates!</p></center>
   <% end %>
 </div>
 <br>

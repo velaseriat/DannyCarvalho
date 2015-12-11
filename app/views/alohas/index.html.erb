@@ -119,13 +119,22 @@ $(document).ready( function() {
           </div>
           <div id="eventCollapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="eventHeadingOne">
             <div class="panel-body" id="my-panel-body"><div class="speciall">
-              <%= image_tag @event1_image, class: "img-responsive center-block" %>
+              
+              <% if @event1.description == '' %>
+              <%= image_tag 'default_event.jpg', class: "img-responsive center-block" %>
               <br>
-              <%= @event1.description %>
-              <br><br>
+              <p>
+                Please join me to relax to some good vibes!
+              </p>
+              <% else %>
+                <%= image_tag @event1_image, class: "img-responsive center-block" %>
+                <br>
+                <%= @event1.description %>
+              <% end %>
+              <br>
               <%= link_to  @event1 do %>
                 <span class="glyphicon glyphicon-calendar"></span>
-                Wait, What's Going On?
+                Click this link for more details >>
               <% end %>
             </div></div>
           </div>
@@ -142,10 +151,19 @@ $(document).ready( function() {
           </div>
           <div id="eventCollapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="eventHeadingTwo">
             <div class="panel-body" id="my-panel-body"><div class="speciall">
-              <%= image_tag @event2_image, class: "img-responsive center-block" %>
+
+              <% if @event2.description == '' %>
+              <%= image_tag 'default_event.jpg', class: "img-responsive center-block" %>
               <br>
-              <%= @event2.description %>
-              <br><br>
+              <p>
+                Please join me to relax to some good vibes!
+              </p>
+              <% else %>
+                <%= image_tag @event1_image, class: "img-responsive center-block" %>
+                <br>
+                <%= @event2.description %>
+              <% end %>
+              <br>
               <%= link_to  @event2 do %>
                 <span class="glyphicon glyphicon-calendar"></span>
                 Wait, What's Going On?
@@ -165,10 +183,19 @@ $(document).ready( function() {
           </div>
           <div id="eventCollapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="eventHeadingThree">
             <div class="panel-body" id="my-panel-body"><div class="speciall">
-              <%= image_tag @event3_image, class: "img-responsive center-block" %>
+
+              <% if @event1.description == '' %>
+              <%= image_tag 'default_event.jpg', class: "img-responsive center-block" %>
               <br>
-              <%= @event3.description %>
-              <br><br>
+              <p>
+                Please join me to relax to some good vibes!
+              </p>
+              <% else %>
+                <%= image_tag @event1_image, class: "img-responsive center-block" %>
+                <br>
+                <%= @event3.description %>
+              <% end %>
+              <br>
               <%= link_to  @event3 do %>
                 <span class="glyphicon glyphicon-calendar"></span>
                 Wait, What's Going On?
@@ -344,7 +371,7 @@ $(document).ready( function() {
     <div class="col-md-4">
       <div class="row" id="header-row">
         <div class="col-md-6">
-          <h4 class="pull-left">YouTubez</h4>
+          <h4 class="pull-left">YouTube Videos</h4>
         </div>
         <div class="col-md-6" id="header-link">
           <%= link_to videos_path, class: "pull-right" do %>
@@ -429,7 +456,7 @@ $(document).ready( function() {
 
   <div class="row" id="aloha-footer">
     <div class="col-md-4 text-center">
-      <h4>Contact Danny<small> Like, Seriously!</small></h4>
+      <h4>Contact Danny<small> For more info</small></h4>
       Email: <%= mail_to 'velaseriat@outlook.com' %>
       <br>
       Phone: ###-###-#### (Honolulu)
@@ -438,7 +465,7 @@ $(document).ready( function() {
       <br><br>
     </div>
     <div class="col-md-4">
-      <center><h4>Brah, like subscribe?</h4></center>
+      <center><h4>Subscribe to the newsletter!</h4></center>
       <div class="subscribe-field">
         <%= form_for Subscriber.new, remote: true do |f| %>
         <div class="input-group" id="input-group-footer">
