@@ -1,0 +1,7 @@
+<iframe style="border: 0; width: 100%; height: 786px;" src=<%= "https://bandcamp.com/EmbeddedPlayer/album=" + @bandcamp_id + "/size=large/bgcol=ffffff/linkcol=e99708/transparent=true/" %> seamless><a href="http://c418.bandcamp.com/album/minecraft-volume-beta">Minecraft - Volume Beta by C418</a></iframe>
+
+
+        <div class="col-sm-7">
+          <div class="tumblr-post" data-href=<%= "https://embed.tumblr.com/embed/post/nfyoJSDDDc5K-zblH5jb-w/" + @tumblr_id %> data-did="430c58218fa0d96a22df58925e1bf97f23cb183c"><a href="http://just--space.tumblr.com/">Danny Carvalho</a></div><script async src="https://secure.assets.tumblr.com/post.js"></script>
+          <br>
+        </div>
