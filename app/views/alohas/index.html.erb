@@ -230,7 +230,9 @@ $(document).ready( function() {
           <%= link_to 'More info', @album1 %>
         </div>
         <div class="media-body">
-          <p class="lead media-heading"><%= @album1.name %></p>
+          <%= link_to @album1 do %>
+            <p class="lead media-heading"><%= @album1.name %></p>
+          <% end %>
             <div id="storefront-text"><%= ActionView::Base.full_sanitizer.sanitize(@album1.description) %></div>
             <br>
         </div>
@@ -250,7 +252,9 @@ $(document).ready( function() {
           <%= link_to 'More info', @album2 %>
         </div>
         <div class="media-body">
-          <p class="lead media-heading"><%= @album2.name %></p>
+          <%= link_to @album2 do %>
+            <p class="lead media-heading"><%= @album2.name %></p>
+          <% end %>
             <div id="storefront-text"><%= ActionView::Base.full_sanitizer.sanitize(@album2.description) %></div>
             <br>
         </div>
@@ -261,7 +265,9 @@ $(document).ready( function() {
       <% unless @product1.nil? %>
       <div class="media">
         <div class="media-body">
-          <p class="lead media-heading"><%= @product1.name %></p>
+          <%= link_to @product1 do %>
+            <p class="lead media-heading"><%= @product1.name %></p>
+          <% end %>
             <div id="storefront-text"><%= @product1.data %></div>
             <br>
         </div>
@@ -457,11 +463,9 @@ $(document).ready( function() {
   <div class="row" id="aloha-footer">
     <div class="col-md-4 text-center">
       <h4>Contact Danny<small> For more info</small></h4>
-      Email: <%= mail_to 'velaseriat@outlook.com' %>
+      Email: <%= mail_to 'info@dannycarvalho.com' %>
       <br>
-      Phone: ###-###-#### (Honolulu)
-      <br>
-      Mailing Address: PO Box 832, Honolulu, HI 96820
+      Phone: 808-286-5452
       <br><br>
     </div>
     <div class="col-md-4">
@@ -469,7 +473,7 @@ $(document).ready( function() {
       <div class="subscribe-field">
         <%= form_for Subscriber.new, remote: true do |f| %>
         <div class="input-group" id="input-group-footer">
-          <%= f.text_field :email, :class => "form-control", :placeholder => "noackup@gopoundsand.com", :text => "text" %>
+          <%= f.text_field :email, :class => "form-control", :placeholder => "youremail@example.com", :text => "text" %>
           <%= f.hidden_field :opted_out, {:checked => "checked"}  %>
           <span class="input-group-btn"><%= f.submit "Shoots!", :class => "btn btn-default" %></span>
         </div>
@@ -478,10 +482,10 @@ $(document).ready( function() {
       <br>
     </div>
     <div class="col-md-4 text-center">
-      <h4>Trouble viewing this site?<small> Uh oh!</small></h4>
-      Webmaster: Kelly Masuda
+      <h4>Trouble viewing this site?</h4>
+      Webmaster: Kelly Masuda 
       <br>
-      Contact: <%= mail_to 'velaseriat@outlook.com' %>
+      Webmaster email: <%= mail_to 'velaseriat@outlook.com' %>
       <br>
     </div>
   </div>

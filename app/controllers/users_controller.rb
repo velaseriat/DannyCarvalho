@@ -353,7 +353,18 @@ class UsersController < ApplicationController
         end
       end
 
-      # @events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
+      events = Event.where('dateTime > ?', DateTime.now).order(:dateTime)
+      events.each do |evee|
+        contains_event = false
+        results.data.items.each do |item|
+          if evee.event_id == item.id
+            contains_event = true
+          end
+        end
+        if !contains_event
+          evee.destroy 
+        end
+      end
       # @events.each do |eve|
       #   if (((Time.zone.now - eve.updated_at)*24).to_i > 2)
       #     eve.destroy

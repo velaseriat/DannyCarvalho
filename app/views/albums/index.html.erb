@@ -51,7 +51,9 @@
     </div>
     <div class="col-md-9">
       <br>
-      <p class="lead" id="product-index-title"><%= album.name %></p>
+      <%= link_to album do %>
+        <p class="lead" id="product-index-title"><%= album.name %></p>
+      <% end %>
       <p><%= album.description.html_safe %></p>
       <p>Released: <%= album.release.strftime("%B %Y") %></p>
       <p><%= link_to 'More info', album %></p>
