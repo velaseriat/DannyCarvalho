@@ -1,6 +1,21 @@
 class AlohasController < ApplicationController
   before_action :set_aloha, only: [:show, :edit, :update, :destroy]
 
+  #weddings page
+  def weddings
+    respond_to do |format|
+      format.html { render :weddings }
+    end
+  end
+
+  def presskit
+    respond_to do |format|
+      format.html { render :presskit }
+    end
+  end
+
+  #press kit page
+
   #update social websites for social collage
   def social
     @soundcloud_id = Aloha.first.soundcloud_id

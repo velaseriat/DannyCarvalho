@@ -28,6 +28,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><%= link_to 'Gigs', events_path %></li>
+              <li><%= link_to 'Store', products_path %></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Media <span class="caret"></span></a>
                 <ul class="dropdown-menu animated fadeIn" id="my-menu">
@@ -35,13 +36,26 @@
                   <li><%= link_to 'Music', albums_path %></li>
                   <li><%= link_to 'Photos', photos_path %></li>
                   <li><%= link_to 'Instagram', igrams_path %></li>
+                  <li><%= link_to '#SOCIAL', social_path %></li>
                   <% if user_signed_in? %>
                     <li><%= link_to 'All Songs', songs_path %></li>
                   <% end %>
                 </ul>
               </li>
-              <li><%= link_to '#SOCIAL', social_path %></li>
-              <li><%= link_to 'Store', products_path %></li>
+
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Press Kit <span class="caret"></span></a>
+                <ul class="dropdown-menu animated fadeIn" id="my-menu">
+                  <li><%= link_to 'Biography', presskit_path(:anchor => "biography") %></li>
+                  <li><%= link_to 'Reviews', presskit_path(:anchor => "reviews") %></li>
+                  <li><%= link_to 'Press Kit Example', presskit_path(:anchor => "example") %></li>
+                  <li><%= link_to 'Press Kit Photos', presskit_path(:anchor => "photos") %></li>
+                </ul>
+              </li>
+
+
+              <li><%= link_to 'Weddings', weddings_path %></li>
               <li><%= link_to 'About Me', about_path %></li>
               <% if user_signed_in? %>
                 <li><%= link_to 'Admin', current_user %></li>
