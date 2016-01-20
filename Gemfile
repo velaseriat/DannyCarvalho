@@ -58,7 +58,7 @@ gem 'wow-rails'
 gem 'share-counter'
 gem 'cloudinary'
 
-gem 'google-api-client'
+gem 'google-api-client', '~> 0.8.6'
 gem 'instagram'
 gem 'twitter'
 # gem 'matenia-tumblr-api'
