@@ -9,6 +9,7 @@ class AlohasController < ApplicationController
   end
 
   def presskit
+    @presskit_photos = Photo.where(presskit: true)
     respond_to do |format|
       format.html { render :presskit }
     end

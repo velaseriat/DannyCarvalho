@@ -340,7 +340,7 @@ DEPENDENCIES
   coffee-script-source (= 1.8.0)
   devise
   font-awesome-rails
-  google-api-client
+  google-api-client (~> 0.8.6)
   instagram
   jbuilder (~> 2.0)
   jquery-rails
