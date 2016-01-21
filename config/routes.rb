@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get     'users/:id/update_social'       => 'users#update_social'
   get     'about'                         => 'alohas#about'
   get     'presskit'                      => 'alohas#presskit'
+  get     'download_file'                      => 'alohas#download_file'
   get     'weddings'                      => 'alohas#weddings'
   get     'social'                        => 'alohas#social'
   get     'unsubscribe'                   => 'subscribers#unsubscribe'

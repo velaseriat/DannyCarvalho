@@ -153,6 +153,11 @@
       <div class="col-md-4">
         <%= link_to photo do %>
           <%= image_tag photo.image_filepath.thumbnail.to_s, class: "img-responsive"%>
+          <br>
+          <center>
+            <%= link_to 'View Image', "http://res.cloudinary.com/velaseriat/image/upload/" + photo.image_filepath.file.filename, class: "btn btn-default" %>
+          </center>
+          <br>
         <% end %>
         <br>
       </div>
