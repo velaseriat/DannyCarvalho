@@ -12,14 +12,16 @@
         <tr>
           <th>Image</th>
           <th>Datetime</th>
+          <th>Presskit</th>
           <th colspan="3">Admin Tools</th>
         </tr>
       </thead>
       <tbody>
-        <% @photos.each do |photo| %>
+        <% @admin_photos.each do |photo| %>
           <tr>
             <td><%= image_tag photo.image_filepath.thumbnail.to_s, {height: 50} %></td>
             <td><%= photo.dateTime %></td>
+            <td><%= photo.presskit.to_s %></td>
             <td><%= link_to 'Show', photo %></td>
             <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
             <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>

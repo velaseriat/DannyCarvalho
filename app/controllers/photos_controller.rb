@@ -4,6 +4,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
+    @admin_photos = Photo.all.order(:dateTime).reverse
     @photos = Photo.all.order(:dateTime).where(:presskit => false).reverse
 
     @photo_sets = Array.new

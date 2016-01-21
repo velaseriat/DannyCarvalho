@@ -4,8 +4,8 @@ $(document).ready( function() {
   $( 'body' ).stellar();
   new WOW().init();
 });
-
 </script>
+
 <div id="header-background" data-stellar-ratio="0.4">
   <%= image_tag 'background.jpg', :id=> "header-background-image" %>
 </div>
@@ -57,6 +57,8 @@ $(document).ready( function() {
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
   </ol>
 
   
@@ -76,6 +78,20 @@ $(document).ready( function() {
 
     <div class="item">
       <%= image_tag "img/1920/3.jpg", class: "carousel_image" %>
+      <span class="carousel-caption row-fluid">
+        
+      </span>
+    </div>
+
+    <div class="item">
+      <%= image_tag "img/1920/4.jpg", class: "carousel_image" %>
+      <span class="carousel-caption row-fluid">
+        
+      </span>
+    </div>
+
+    <div class="item">
+      <%= image_tag "img/1920/5.jpg", class: "carousel_image" %>
       <span class="carousel-caption row-fluid">
         
       </span>
