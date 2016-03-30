@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       require 'soundcloud'
       #require 'tumblr'
       require 'twitter'
-      
+
       #soundcloud
       sc_client           = Soundcloud.new(client_id: Rails.application.config.soundcloudClientID)
       sc_track            = sc_client.get('/tracks', limit: 1,  user_id: 44982439).first
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         :scope => 'https://www.googleapis.com/auth/youtube',
         :issuer => Rails.application.config.googleIssuer,
         :signing_key => key)
-      client.authorization.fetch_access_token!
+      client.authorization.fetch_access_token!(:connection => client.connection)
 
       yt = client.discovered_api('youtube', 'v3')
 
@@ -205,7 +205,7 @@ class UsersController < ApplicationController
       end
 
       SubscriberMailer.turn_off_mailer.deliver_later
-      
+
       respond_to do |format|
         format.html { redirect_to current_user }
       end
@@ -232,7 +232,7 @@ class UsersController < ApplicationController
   #       :scope => 'https://www.googleapis.com/auth/cse',
   #       :issuer => Rails.application.config.googleIssuer,
   #       :signing_key => key)
-  #     client.authorization.fetch_access_token!
+  #     client.authorization.fetch_access_token!(:connection => client.connection)
 
   #     cse_api = client.discovered_api('customsearch', 'v1')
 
@@ -297,7 +297,7 @@ class UsersController < ApplicationController
         :scope => 'https://www.googleapis.com/auth/calendar',
         :issuer => Rails.application.config.googleIssuer,
         :signing_key => key)
-      client.authorization.fetch_access_token!
+      client.authorization.fetch_access_token!(:connection => client.connection)
 
       calendar_api = client.discovered_api('calendar', 'v3')
 
@@ -362,7 +362,7 @@ class UsersController < ApplicationController
           end
         end
         if !contains_event
-          evee.destroy 
+          evee.destroy
         end
       end
       # @events.each do |eve|
@@ -393,7 +393,7 @@ class UsersController < ApplicationController
         :scope => 'https://www.googleapis.com/auth/youtube',
         :issuer => Rails.application.config.googleIssuer,
         :signing_key => key)
-      client.authorization.fetch_access_token!
+      client.authorization.fetch_access_token!(:connection => client.connection)
 
       yt = client.discovered_api('youtube', 'v3')
 
@@ -491,7 +491,7 @@ class UsersController < ApplicationController
         :scope => 'https://www.googleapis.com/auth/blogger',
         :issuer => Rails.application.config.googleIssuer,
         :signing_key => key)
-      client.authorization.fetch_access_token!
+      client.authorization.fetch_access_token!(:connection => client.connection)
 
       blogger = client.discovered_api('blogger', 'v3')
 
@@ -548,7 +548,7 @@ class UsersController < ApplicationController
   #       :scope => 'https://www.googleapis.com/auth/blogger',
   #       :issuer => Rails.application.config.googleIssuer,
   #       :signing_key => key)
-  #     client.authorization.fetch_access_token!
+  #     client.authorization.fetch_access_token!(:connection => client.connection)
 
   #     blogger = client.discovered_api('blogger', 'v3')
 
