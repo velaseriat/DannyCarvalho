@@ -9,7 +9,7 @@ require 'instagram'
 s = Rufus::Scheduler.singleton
 #@event = Event.first
 def update_instagram
-  
+
   Instagram.configure do |config|
     config.client_id = Rails.application.config.instagramClientID
     config.client_secret = Rails.application.config.instagramClientSecret
@@ -61,7 +61,7 @@ def update_events
         :scope => 'https://www.googleapis.com/auth/calendar',
         :issuer => Rails.application.config.googleIssuer,
         :signing_key => key)
-      client.authorization.fetch_access_token!
+      client.authorization.fetch_access_token!(:connection => client.connection)
 
       calendar_api = client.discovered_api('calendar', 'v3')
 
@@ -127,7 +127,7 @@ def update_events
           end
         end
         if !contains_event
-          evee.destroy 
+          evee.destroy
         end
       end
 
@@ -153,7 +153,7 @@ def update_youtube
     :scope => 'https://www.googleapis.com/auth/youtube',
     :issuer => Rails.application.config.googleIssuer,
     :signing_key => key)
-  client.authorization.fetch_access_token!
+  client.authorization.fetch_access_token!(:connection => client.connection)
 
   yt = client.discovered_api('youtube', 'v3')
 
@@ -238,7 +238,7 @@ def update_blogger
     :scope => 'https://www.googleapis.com/auth/blogger',
     :issuer => Rails.application.config.googleIssuer,
     :signing_key => key)
-  client.authorization.fetch_access_token!
+  client.authorization.fetch_access_token!(:connection => client.connection)
 
   blogger = client.discovered_api('blogger', 'v3')
 
@@ -252,7 +252,7 @@ def update_blogger
       :view => 'READER'
     }
     )
-  
+
   if !results.nil?
     if !results.data.nil?
       if !results.data.items[0].nil?
@@ -283,7 +283,7 @@ end
 #     :scope => 'https://www.googleapis.com/auth/blogger',
 #     :issuer => Rails.application.config.googleIssuer,
 #     :signing_key => key)
-#   client.authorization.fetch_access_token!
+#   client.authorization.fetch_access_token!(:connection => client.connection)
 
 #   blogger = client.discovered_api('blogger', 'v3')
 
@@ -294,7 +294,7 @@ end
 #       :pageId => '412588053249616065'
 #     }
 #     )
-  
+
 #   if !results.nil?
 #     if !results.data.nil?
 #       if !results.data.content.nil?
